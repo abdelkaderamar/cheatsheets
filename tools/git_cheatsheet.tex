@@ -61,7 +61,7 @@
   \rowcolors{1}{}{TableRow}
   \centering
   \node (tbl) [inner sep=0pt] {
-  \begin{tabular}{p{6.5cm}p{4.5cm}}
+  \begin{tabular}{p{4cm}p{7cm}}
     \rowcolor{TableHead}
     \multicolumn{2}{l}{\normalsize\textbf{\color{white}{#1}}}\parbox{0pt}{\rule{0pt}{0.3ex+\baselineskip}}\\
     \BODY
@@ -92,7 +92,7 @@
 
     \centering\section{Commandes}
 
-    \begin{keys}{Commandes courante}
+    \begin{keys}{Commandes courantes}
       Etat du dépôt local                & \texttt{git status} \\
       Ajouter un fichier pour le commit  & \texttt{git add <fichier ou dir>} \\
       Commit (avec éditeur)              & \texttt{git commit} \\
@@ -101,15 +101,16 @@
     \end{keys}
 
     \begin{keys}{Vérifications de l'état du repo}
-      Voir les commits non publiés       & \texttt{git log origin/master..HEAD} \\
+      Voir les commits non publiés           & \texttt{git log origin/master..HEAD} \\
       Voir les diff des commits non publiés  & \texttt{git diff origin/master..HEAD} \\
+      Afficher les infos du repo distant     & \texttt{git remote show origin} \\
     \end{keys}
 
-   \centering\section{Section}
+   \centering\section{Github}
 
-   \begin{keys}{Something}
-     Change l'URL du repo de https à ssh & \texttt{git remote set-url origin git+ssh://git@github.com/username/reponame.git
-} \\
+   \begin{keys}{Accès}
+     Change l'URL du repo de https à ssh (remplacer user par le nom utilisateur) &
+     \texttt{git remote set-url origin git+ssh://git@github.com/user/reponame.git} \\
      Text                 & \texttt{Command} \\
      Text                 & \texttt{Command} \\
      Text                 & \texttt{Command} \\
