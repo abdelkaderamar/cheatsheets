@@ -18,7 +18,8 @@
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{environ}
-\usepackage{fancyvrb}
+\usepackage{makecell}
+\usepackage{pbox}
 
 \usetikzlibrary{calc}
 \pgfdeclarelayer{background}
@@ -123,9 +124,9 @@
      Add executable target &
      \texttt{add\_executable(\$\{CPP\_EXE\} \$\{CPP\_FILE\})} \\
      Add an executable target for each cpp file &
-     \texttt{foreach ( CPP\_FILE \$\{SAMPLES\_SRCS\} )
-       get\_filename\_component(CPP\_EXE \$\{CPP\_FILE\} NAME\_WE )
-       add\_executable ( \$\{CPP\_EXE\} \$\{CPP\_FILE\} )
+     \texttt{foreach ( CPP \$\{SAMPLES\_SRCS\} ) \newline
+     get\_filename\_component(EXE \$\{CPP\} NAME\_WE ) \newline
+     add\_executable ( \$\{EXE\} \$\{FILE\} ) \newline
      endforeach( CPP\_FILE )} \\
    \end{keys}
 
