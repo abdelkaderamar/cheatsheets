@@ -18,6 +18,7 @@
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{environ}
+\usepackage{fancyvrb}
 
 \usetikzlibrary{calc}
 \pgfdeclarelayer{background}
@@ -61,7 +62,7 @@
   \rowcolors{1}{}{TableRow}
   \centering
   \node (tbl) [inner sep=0pt] {
-  \begin{tabular}{p{4cm}p{7cm}}
+  \begin{tabular}{p{3.8cm}p{7.2cm}}
     \rowcolor{TableHead}
     \multicolumn{2}{l}{\normalsize\textbf{\color{white}{#1}}}\parbox{0pt}{\rule{0pt}{0.3ex+\baselineskip}}\\
     \BODY
@@ -78,6 +79,7 @@
   }
 
   \begin{document}
+
 
   \raggedright\
 
@@ -100,11 +102,31 @@
 
    \centering\section{Files}
 
-   \begin{keys}{Files names}
+   \begin{keys}{Filenames}
      Get files by their names using wildcard (here all cpp files) &
-    \texttt{File ( GLOB <VAR\_NAME> *.cpp )} \\
-      Get filename without extension &
-      \texttt{get\_filename\_component(CPP\_EXE {CPP\_FILE} NAME\_WE )} \\
+     \texttt{File ( GLOB <VAR\_NAME> *.cpp )} \\
+     Get filename without extension &
+     \texttt{get\_filename\_component(FNAME \$\{CPP\} NAME\_WE)} \\
+     Get name without directory &
+     \texttt{get\_filename\_component(FNAME \$\{CPP\} NAME)} \\
+     Get file extension (longest)  &
+     \texttt{get\_filename\_component(FEXT \$\{CPP\} EXT)} \\
+     Get file absolute path  &
+     \texttt{get\_filename\_component(FPATH \$\{CPP\} ABSOLUTE)} \\
+     Get file absolute path with symlinks resolved  &
+     \texttt{get\_filename\_component(FPATH \$\{CPP\} REALPATH)} \\
+     Get file directory &
+     \texttt{get\_filename\_component(FDIR \$\{CPP\} DIRECTORY)} \\
+   \end{keys}
+
+   \begin{keys}{Targets}
+     Add executable target &
+     \texttt{add\_executable(\$\{CPP\_EXE\} \$\{CPP\_FILE\})} \\
+     Add an executable target for each cpp file &
+     \texttt{foreach ( CPP\_FILE \$\{SAMPLES\_SRCS\} )
+       get\_filename\_component(CPP\_EXE \$\{CPP\_FILE\} NAME\_WE )
+       add\_executable ( \$\{CPP\_EXE\} \$\{CPP\_FILE\} )
+     endforeach( CPP\_FILE )} \\
    \end{keys}
 
 
@@ -112,8 +134,8 @@
 
     \centering\section{C++}
 
-    \begin{keys}{Compilateur}
-      Utiliser un compilateur C++ proposant un standard  &
+    \begin{keys}{Compiler}
+      Define C++ standard requirement of the compiler (here c++14)   &
       \texttt{set(CMAKE\_CXX\_STANDARD 14)
         set(CMAKE\_CXX\_STANDARD\_REQUIRED ON)} \\
 %      Text                 & \texttt{Command} \\
