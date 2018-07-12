@@ -90,27 +90,27 @@
     \raggedcolumns
     \noindent    %<---- here
 
-    \centering\section{Commandes}
+    \centering\section{Commands}
 
-    \begin{keys}{Commandes courantes}
-      Etat du dépôt local                & \texttt{git status} \\
-      Ajouter un fichier pour le commit  & \texttt{git add <fichier ou dir>} \\
-      Commit (avec éditeur)              & \texttt{git commit} \\
-      Commit (avec message)              & \texttt{git commit -m "message"} \\
-      Envoyer les modifications dans le dépôt distant (branche master) & \texttt{git push origin master} \\
+    \begin{keys}{Basic commands}
+      Local repository status                & \texttt{git status} \\
+      Stage a file/dir to commit list        & \texttt{git add <file or dir>} \\
+      Commit (with text editor)              & \texttt{git commit} \\
+      Commit (with commit message)           & \texttt{git commit -m "message"} \\
+      Send committed modification to remote repository (master branch) & \texttt{git push origin master} \\
     \end{keys}
 
-    \begin{keys}{Vérifications de l'état du repo}
-      Voir les commits non publiés           & \texttt{git log origin/master..HEAD} \\
-      Voir les diff des commits non publiés  & \texttt{git diff origin/master} \\
-      Voir les diff des commits non publiés  & \texttt{git diff origin/master..HEAD} \\
-      Afficher les infos du repo distant     & \texttt{git remote show origin} \\
+    \begin{keys}{Repository status}
+      Unpublished commits           & \texttt{git log origin/master..HEAD} \\
+      Display diff of unpublished commits  & \texttt{git diff origin/master} \\
+      Display diff of unpublished commits  & \texttt{git diff origin/master..HEAD} \\
+      Remote repository information     & \texttt{git remote show origin} \\
     \end{keys}
 
    \centering\section{Github}
 
-   \begin{keys}{Accès}
-     Change l'URL du repo de https à ssh (remplacer user par le nom utilisateur) &
+   \begin{keys}{Access}
+     Change repo URL from https to ssh (replace user by the real username) &
      \texttt{git remote set-url origin git+ssh://git@github.com/user/reponame.git} \\
      Text                 & \texttt{Command} \\
      Text                 & \texttt{Command} \\
@@ -125,19 +125,19 @@
     \centering\section{Section}
 
     \begin{keys}{Something}
-      Changer le message d'un commit           & 
+      Modify a commit message           &
       \texttt{git commit --amend} \\
-%      Text                 & \texttt{Command} \\
     \end{keys}
 %
-%    \begin{keys}{Something}
-%      Text                 & \texttt{Command} \\
-%      Text                 & \texttt{Command} \\
-%      Text                 & \texttt{Command} \\
-%      Text                 & \texttt{Command} \\
-%      Text                 & \texttt{Command} \\
-%      Text                 & \texttt{Command} \\
-%    \end{keys}
+    \centering\section{Repositories Management}
+
+    \begin{keys}{Misc}
+      Push to multiple Git repositories &
+      \texttt{git remote add github \textbackslash \newline}
+      \hspace*{0.5cm} \texttt{git@github.com:aamar/my-project.git \newline}
+      \texttt{git remote add bb \textbackslash \newline}
+      \hspace*{0.5cm} \texttt{git@bitbucket.org:aamar/my-project.git} \\
+    \end{keys}
 %
 %    \begin{keys}{Something}
 %      Text                 & \texttt{Command} \\
