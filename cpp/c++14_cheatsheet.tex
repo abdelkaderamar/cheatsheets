@@ -82,7 +82,7 @@
   \raggedright\
 
   \begin{center}
-    \Huge{\underline{TITLE Cheatsheet}}
+    \Huge{\underline{C++14 Cheatsheet}}
   \end{center}
 
   \footnotesize
@@ -90,28 +90,79 @@
     \raggedcolumns
     \noindent    %<---- here
 
-    \centering\section{Section}
+    \centering\section{Language}
 
-    \begin{keys}{Something}
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
+    \begin{keys}{Language New features}
+      Function return type deduction &
+      \texttt{auto f()} \\
+      \multicolumn{2}{p{7.45cm}}{
+      \texttt{auto f\_cpp14() \{\newline
+      \hspace*{0.25cm} return 1;\newline
+      \} \newline
+      auto f\_cpp11() -> int \{ \newline
+      \hspace*{0.25cm} return 1; \newline
+      \} \newline
+      }
+      } \\
+      Variable templates                 &
+      \texttt{} \\
+      \multicolumn{2}{p{7.45cm}}{
+      \texttt{template<typename T>\newline
+      constexpr T pi = T(3.141592653589793238462643383);\newline
+      \newline
+      template<>\newline
+      constexpr const char* pi<const char*> = "pi";
+      }
+      } \\
+      Aggreagte member initialization                 &
+      \texttt{} \\
+      \multicolumn{2}{p{7.45cm}}{
+      \texttt{struct foo \{ \newline
+      \hspace*{0.25cm}  int x\{10\}, y, z; \newline
+      \}; \newline
+      struct foo f \{1, 2\}; \newline
+       \newline
+      struct bar \{ \newline
+      \hspace*{0.25cm}  int x\{1\}, y\{2\}, z\{3\}; \newline
+      \}; \newline
+      struct bar b \{1, 2 \};
+      }
+      } \\
+      Binary literals                 & \texttt{0b} or \texttt{0B} \\
+      \multicolumn{2}{p{7.45cm}}{
+      \texttt{short i = 0b0101010101010101; \newline
+      short j = 0b1101010101010101;
+      }
+      } \\
+      Digit separator                 &
+      \texttt{Single quote character (arbitrary position)} \\
+      \multicolumn{2}{p{7.45cm}}{
+      \texttt{int i = 1'928'229'292; \newline
+      int j = 1928'2'292'92;
+      }
+      }\\
+      Generic lambda                 & \texttt{} \\
+      \multicolumn{2}{p{7.45cm}}{
+      \texttt{auto lambda = [](auto x, auto y) \{ return x + y; \}; \newline
+       \newline
+      int main(int argc, char *agrv[]) \{ \newline
+      \hspace*{0.25cm}   cout << lambda(1, 2) << endl; \newline
+      \hspace*{0.25cm}   cout << lambda(1.6, 2.5) << endl; \newline
+      \hspace*{0.25cm}   string s1\{"1"\}, s2\{".5"\}; \newline
+      \hspace*{0.25cm}   cout << lambda(s1, s2) << endl; \newline
+      \}
+      }
+      } \\
+      The attribute deprecated &
+      \texttt{deprecated} \newline or \newline
+      \texttt{deprecated["message"]} \\
+      \multicolumn{2}{p{7.45cm}}{
+      \texttt{[[deprecated]] void f() \{\}; \newline
+       \newline
+      [[deprecated("g will not be supported from next release")]] void g() \{\}; \newline
+      }
+      }\\
     \end{keys}
-
-    \centering\section{Section}
-
-    \begin{keys}{Something}
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-    \end{keys}
-
 
     \columnbreak
 
