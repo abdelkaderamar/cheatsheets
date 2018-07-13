@@ -98,7 +98,7 @@
       Commit (with text editor)              & \texttt{git commit} \\
       Commit (with commit message)           & \texttt{git commit -m "message"} \\
       Send committed modification to remote repository (master branch) & \texttt{git push origin master} \\
-      Verbose mode                           & 
+      Verbose mode                           &
       \texttt{git command --verbose} or \newline \texttt{git command -v} \\
       Dry run                                &
       \texttt{git command --dry-run} \\
@@ -137,10 +137,15 @@
 
     \begin{keys}{Misc}
       Push to multiple Git repositories &
-      \texttt{git remote add github \textbackslash \newline}
-      \hspace*{0.5cm} \texttt{git@github.com:aamar/my-project.git \newline}
-      \texttt{git remote add bb \textbackslash \newline}
-      \hspace*{0.5cm} \texttt{git@bitbucket.org:aamar/my-project.git} \\
+      \texttt{git remote add github \textbackslash \newline
+      \hspace*{0.5cm} git@github.com:aamar/my-project.git \newline
+      git remote add bb \textbackslash \newline
+      \hspace*{0.5cm} git@bitbucket.org:aamar/my-project.git \newline
+      git remote set-url --add --push origin \textbackslash \newline
+      \hspace*{0.5cm} git@github.com:aamar/my-project.git \newline
+      git remote set-url --add --push origin \textbackslash \newline
+      \hspace*{0.5cm} git@bitbucket.org:aamar/my-project.git
+      } \\
     \end{keys}
 %
 %    \begin{keys}{Something}
