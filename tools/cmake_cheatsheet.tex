@@ -104,6 +104,22 @@
       \texttt{add\_Subdirectory(src)} \\
     \end{keys}
 
+    \centering\section{Executables and Libraries}
+
+    \begin{keys}{Targets}
+      Add library target &
+      \texttt{Add\_Library ( data \$\{DATA\_SOURCES\} )} \\
+      Add dependency libraries (for libray or an executable) &
+      \texttt{Target\_Link\_Libraries (test\_generator \newline
+      \hspace*{0.25cm} util data fix fixml)} \\
+      Add executable target &
+      \texttt{add\_executable(\$\{CPP\_EXE\} \$\{CPP\_FILE\})} \\
+      Add an executable target for each cpp file &
+      \texttt{foreach ( CPP \$\{SAMPLES\_SRCS\} ) \newline
+      get\_filename\_component(EXE \$\{CPP\} NAME\_WE ) \newline
+      add\_executable ( \$\{EXE\} \$\{FILE\} ) \newline
+      endforeach( CPP\_FILE )} \\
+    \end{keys}
 
    \centering\section{Files}
 
@@ -124,22 +140,6 @@
      \texttt{get\_filename\_component(FDIR \$\{CPP\} DIRECTORY)} \\
    \end{keys}
 
-   \begin{keys}{Targets}
-     Add library target &
-     \texttt{Add\_Library ( data \$\{DATA\_SOURCES\} )} \\
-     Add dependency libraries (for libray or an executable) &
-     \texttt{Target\_Link\_Libraries (test\_generator \newline
-     \hspace*{0.25cm} util data fix fixml)} \\
-     Add executable target &
-     \texttt{add\_executable(\$\{CPP\_EXE\} \$\{CPP\_FILE\})} \\
-     Add an executable target for each cpp file &
-     \texttt{foreach ( CPP \$\{SAMPLES\_SRCS\} ) \newline
-     get\_filename\_component(EXE \$\{CPP\} NAME\_WE ) \newline
-     add\_executable ( \$\{EXE\} \$\{FILE\} ) \newline
-     endforeach( CPP\_FILE )} \\
-   \end{keys}
-
-
     \columnbreak
 
     \centering\section{C++}
@@ -154,6 +154,23 @@
         \texttt{Include\_Directories(\$\{Xerces\_INCLUDE\_DIRS\})} \\
 %      Text                 & \texttt{Command} \\
     \end{keys}
+
+    \centering\section{Tests}
+
+    \begin{keys}{Tests}
+      TODO                 & \texttt{Command} \\
+    \end{keys}
+
+    \centering\section{Packaging and Installation}
+
+    \begin{keys}{Packaging}
+      TODO                 & \texttt{Command} \\
+    \end{keys}
+
+    \begin{keys}{Installation}
+      TODO                 & \texttt{Command} \\
+    \end{keys}
+
 %
 %    \begin{keys}{Something}
 %      Text                 & \texttt{Command} \\
