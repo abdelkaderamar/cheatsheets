@@ -96,8 +96,12 @@
     \centering\section{The Basics}
 
     \begin{keys}{Basic commands}
-      Project definition                 & \texttt{project ( <NAME> )} \\
-      cmake version requirement          & \texttt{cmake\_minimum\_required( VERSION 2.8.7 )} \\
+      Project definition                 &
+      \texttt{project ( <NAME> )} \\
+      cmake version requirement          &
+      \texttt{cmake\_minimum\_required( VERSION 2.8.7 )} \\
+      Add a subdirectory to cmake &
+      \texttt{add\_Subdirectory(src)} \\
     \end{keys}
 
 
@@ -121,6 +125,11 @@
    \end{keys}
 
    \begin{keys}{Targets}
+     Add library target &
+     \texttt{Add\_Library ( data \$\{DATA\_SOURCES\} )} \\
+     Add dependency libraries (for libray or an executable) &
+     \texttt{Target\_Link\_Libraries (test\_generator \newline
+     \hspace*{0.25cm} util data fix fixml)} \\
      Add executable target &
      \texttt{add\_executable(\$\{CPP\_EXE\} \$\{CPP\_FILE\})} \\
      Add an executable target for each cpp file &
@@ -139,6 +148,10 @@
       Define C++ standard requirement of the compiler (here c++14)   &
       \texttt{set(CMAKE\_CXX\_STANDARD 14)
         set(CMAKE\_CXX\_STANDARD\_REQUIRED ON)} \\
+        Add compilation flag
+        & \texttt{add\_definitions ( "-std=c++11" )} \\
+        Add include directory &
+        \texttt{Include\_Directories(\$\{Xerces\_INCLUDE\_DIRS\})} \\
 %      Text                 & \texttt{Command} \\
     \end{keys}
 %
