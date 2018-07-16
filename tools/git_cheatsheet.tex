@@ -90,7 +90,7 @@
     \raggedcolumns
     \noindent    %<---- here
 
-    \centering\section{Commands}
+    \centering\section{Working With Repositories}
 
     \begin{keys}{Basic commands}
       Local repository status                & \texttt{git status} \\
@@ -126,16 +126,23 @@
 
     \columnbreak
 
-    \centering\section{Section}
+    \centering\section{Working With Files}
 
-    \begin{keys}{Something}
+    \begin{keys}{Commit}
       Modify a commit message           &
       \texttt{git commit --amend} \\
+      Undo commit &
+      \texttt{git commit -m "message" \newline
+      git reset HEAD\~                              \newline
+      << edit files as necessary >>                \newline
+      git add <...>                                \newline
+      git commit -c ORIG\_HEAD
+      } \\
     \end{keys}
 %
-    \centering\section{Repositories Management}
+    \centering\section{Useful Tips}
 
-    \begin{keys}{Misc}
+    \begin{keys}{Mirroring}
       Push to multiple Git repositories &
       \texttt{git remote add github \textbackslash \newline
       \hspace*{0.5cm} git@github.com:aamar/my-project.git \newline
