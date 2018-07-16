@@ -138,6 +138,12 @@
       git add <...>                                \newline
       git commit -c ORIG\_HEAD
       } \\
+      Revert one or more commits (by hashes) &
+      \texttt{git revert a867b4af 25eee4ca 0766c053} \\
+      Revert the last two commits &
+      \texttt{git revert HEAD~2..HEAD} \\
+      Revert range of commits (by hashes interval) &
+      \texttt{git revert a867b4af..0766c053} \\
     \end{keys}
 %
     \centering\section{Useful Tips}
