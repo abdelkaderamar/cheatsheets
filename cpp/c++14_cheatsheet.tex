@@ -1,8 +1,9 @@
-\documentclass[10pt,english,landscape]{article}
+\documentclass[10pt,english,landscape, a4]{article}
 \usepackage{multicol}
 \usepackage{calc}
 \usepackage[landscape]{geometry}
 \usepackage{color,graphicx,overpic}
+%\usepackage{xcolor}
 
 \usepackage[T1]{fontenc}
 \usepackage[bitstream-charter]{mathdesign}
@@ -18,6 +19,17 @@
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{environ}
+\usepackage{listings}
+
+\usepackage{minted}
+\usemintedstyle{borland}
+
+\pdfinfo{
+  /Title (C++14 Cheatsheet.pdf)
+  /Creator (Latex)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, C++14, Programming, Latex)}
 
 \usetikzlibrary{calc}
 \pgfdeclarelayer{background}
@@ -77,146 +89,229 @@
   % \end{center}
   }
 
-  \begin{document}
-
-  \raggedright\
-
-  \begin{center}
-    \Huge{\underline{C++14 Cheatsheet}}
+\newcommand{\feature}[2]{
+\begin{center}
+\smallskip
+\begin{tikzpicture}
+  \rowcolors{1}{}{TableRow}
+  \centering
+  \node (tbl) [inner sep=0pt] {
+  \begin{tabular}{p{13cm}}
+    \rowcolor{TableHead}
+    \multicolumn{1}{l}{\normalsize\textbf{\color{white}{#1}}}\parbox{0pt}{\rule{0pt}{0.3ex+\baselineskip}}\\
+    #2 \\
+    \arrayrulecolor{TableHead}\specialrule{.17em}{0em}{.1em}
+    \end{tabular}};
+    \begin{pgfonlayer}{background}
+      \draw[rounded corners=2pt,top color=TableHead,bottom color=TableHead, draw=white]
+      ($(tbl.north west)-(0,-0.05)$) rectangle ($(tbl.north east)-(0.0,0.15)$);
+      \draw[rounded corners=2pt,top color=TableHead,bottom color=TableHead, draw=white]
+      ($(tbl.south west)-(0.0,-0.11)$) rectangle ($(tbl.south east)-(-0.0,-0.02)$);
+    \end{pgfonlayer}
+  \end{tikzpicture}
   \end{center}
+  }
 
-  \footnotesize
-  \begin{multicols}{3}
-    \raggedcolumns
-    \noindent    %<---- here
+\newcommand{\cppitem}[1]{
+  \vspace{0.15cm}
+    \begin{tikzpicture}
+      \node [fill=TableHead, text=white, draw, rounded corners=2pt, minimum height=0.55cm]{\normalsize\textbf{#1}};
+    \end{tikzpicture}
+    \vspace{0.02cm}
+  }
 
-    \centering\section{Language}
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
 
-    \begin{keys}{Language New features}
-      Function return type deduction &
-      \texttt{auto f()} \\
-      \multicolumn{2}{p{7.45cm}}{
-      \texttt{auto f\_cpp14() \{\newline
-      \hspace*{0.25cm} return 1;\newline
-      \} \newline
-      auto f\_cpp11() -> int \{ \newline
-      \hspace*{0.25cm} return 1; \newline
-      \} \newline
-      }
-      } \\
-      Variable templates                 &
-      \texttt{} \\
-      \multicolumn{2}{p{7.45cm}}{
-      \texttt{template<typename T>\newline
-      constexpr T pi = T(3.141592653589793238462643383);\newline
-      \newline
-      template<>\newline
-      constexpr const char* pi<const char*> = "pi";
-      }
-      } \\
-      Aggreagte member initialization                 &
-      \texttt{} \\
-      \multicolumn{2}{p{7.45cm}}{
-      \texttt{struct foo \{ \newline
-      \hspace*{0.25cm}  int x\{10\}, y, z; \newline
-      \}; \newline
-      struct foo f \{1, 2\}; \newline
-       \newline
-      struct bar \{ \newline
-      \hspace*{0.25cm}  int x\{1\}, y\{2\}, z\{3\}; \newline
-      \}; \newline
-      struct bar b \{1, 2 \};
-      }
-      } \\
-      Binary literals                 & \texttt{0b} or \texttt{0B} \\
-      \multicolumn{2}{p{7.45cm}}{
-      \texttt{short i = 0b0101010101010101; \newline
-      short j = 0b1101010101010101;
-      }
-      } \\
-      Digit separator                 &
-      \texttt{Single quote character (arbitrary position)} \\
-      \multicolumn{2}{p{7.45cm}}{
-      \texttt{int i = 1'928'229'292; \newline
-      int j = 1928'2'292'92;
-      }
-      }\\
-      Generic lambda                 & \texttt{} \\
-      \multicolumn{2}{p{7.45cm}}{
-      \texttt{auto lambda = [](auto x, auto y) \{ return x + y; \}; \newline
-       \newline
-      int main(int argc, char *agrv[]) \{ \newline
-      \hspace*{0.25cm}   cout << lambda(1, 2) << endl; \newline
-      \hspace*{0.25cm}   cout << lambda(1.6, 2.5) << endl; \newline
-      \hspace*{0.25cm}   string s1\{"1"\}, s2\{".5"\}; \newline
-      \hspace*{0.25cm}   cout << lambda(s1, s2) << endl; \newline
-      \}
-      }
-      } \\
-      The attribute deprecated &
-      \texttt{deprecated} \newline or \newline
-      \texttt{deprecated["message"]} \\
-      \multicolumn{2}{p{7.45cm}}{
-      \texttt{[[deprecated]] void f() \{\}; \newline
-       \newline
-      [[deprecated("g will not be supported from next release")]] void g() \{\}; \newline
-      }
-      }\\
-    \end{keys}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                  {.2ex}%
+                                  {.2ex}%x
+                                  {\color{myblue}\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+                                  {.2ex}%
+                                  {.2ex}%x
+                                  {\sffamily\bfseries}}
+\begin{document}
+\raggedright\
 
-    \columnbreak
+\begin{center}
+  \Huge{\underline{C++14 Cheatsheet}}
+\end{center}
+\vspace{1cm}
 
-    \centering\section{Section}
+\footnotesize
+\begin{multicols}{2}
+  \raggedcolumns
+  \noindent    %<---- here
 
-    \begin{keys}{Something}
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-    \end{keys}
+% \section{Function return type deduction}
+%     \texttt{auto f()}
+% \begin{minted}
+%     [frame=single,
+%     framesep=2mm,
+%     baselinestretch=1.2,
+%     fontsize=\footnotesize,
+%     ]{cpp}
+% auto f_cpp14() { return 1; }
+%
+% auto f_cpp11() -> int { return 1; }
+% \end{minted}
 
-    \begin{keys}{Something}
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-    \end{keys}
+%-------------------------------------------------------------------------------
 
-    \begin{keys}{Something}
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-    \end{keys}
+\cppitem{Function return type deduction}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+auto f_cpp14() { return 1; } // return type deduced to int
 
-    \columnbreak
-    \centering\section{Section}
+auto f_cpp11() -> int { return 1; } // trailing return type is needed in c++11
+\end{minted}
 
-    \begin{keys}{Something}
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-    \end{keys}
+%-------------------------------------------------------------------------------
 
-    \begin{keys}{Something}
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-      Text                 & \texttt{Command} \\
-    \end{keys}
+\cppitem{Variable templates}
+\begin{minted}[frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template<typename T>
+constexpr T pi = T(3.141592653589793238462643383);
+
+template<>
+constexpr const char* pi<const char*> = "pi";
+
+cout << pi<long double> << endl;
+cout << pi<double> << endl;
+cout << pi<float> << endl;
+cout << pi<const char*> << endl;
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Aggreagte member initialization}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+struct foo_2 {
+  int x{10}, y, z;
+};
+struct foo_2 f2 { 1, 2 }; // error in c++11
+
+struct foo_3 {
+  int x{1}, y{2}, z{3};
+};
+struct foo_3 f3_a { 1, 2 }; // error in c++11
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Binary literals}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+short i = 0b0101010101010101; // 0b
+short j = 0B1101010101010101; // or 0B
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{The attribute deprecated}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+class foo
+{
+public:
+  // with message
+  [[deprecated("x is not protected. Use getter instead")]]
+  int x;
+};
+// without message
+[[deprecated]] void f() {};
+[[deprecated("g will not be supported from next release")]] void g() {};
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\columnbreak
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Digit separator}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+int i = 1'928'229'292; // single quote placed arbitrarily
+int j = 1928'2'292'92; // for integer and floating point literals
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Generic lambda}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+auto lambda = [](auto x, auto y) { return x + y; };
+
+cout << lambda(1, 2) << endl; // x and y deduced to int
+cout << lambda(1.6, 2.5) << endl; // x and y deduced to float
+string s1{"1"}, s2{".5"};
+cout << lambda(s1, s2) << endl; // x and y deduced to std::string
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Relaxed constexpr restrictions}
+
+constexpr functions may contain:
+\begin{itemize}
+  \item declarations (except *static* or *thread\_local*)
+  \item *if* and *switch*
+  \item loops
+\end{itemize}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+constexpr int f_cpp14(int x) {
+  if (x % 2 == 0)
+    return x * 10;
+  return x;
+}
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Lambda capture expression}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+auto lambda_constant = [value = 3](int x) { return value * x; };
+
+auto lambda_func_call = [value = f(argc)](int x) { return value * x; };
+
+string s{"foo"};
+auto lambda_move = [value = move(s)](int x) { return value + to_string(x); };
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Alternate type deduction on declaration}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+int i;
+int&& f();
+auto x3a = i;                  // decltype(x3a) is int
+decltype(auto) x3d = i;        // decltype(x3d) is int
+auto x4a = (i);                // decltype(x4a) is int
+decltype(auto) x4d = (i);      // decltype(x4d) is int&
+auto x5a = f();                // decltype(x5a) is int
+decltype(auto) x5d = f();      // decltype(x5d) is int&&
+auto x6a = { 1, 2 };           // decltype(x6a) is std::initializer_list<int>
+decltype(auto) x6d = { 1, 2 }; // error, { 1, 2 } is not an expression
+auto *x7a = &i;                // decltype(x7a) is int*
+decltype(auto)*x7d = &i;   // error, declared type is not plain decltype(auto)
+\end{minted}
 
 
-  \end{multicols}
+%-------------------------------------------------------------------------------
 
-  \end{document}
+% \cppitem{Feature}
+% \begin{minted}
+%   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+% \end{minted}
+%
+
+\end{multicols}
+
+\end{document}
