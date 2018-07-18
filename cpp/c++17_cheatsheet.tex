@@ -42,6 +42,9 @@
 \cppitem{Template argument deduction for class templates}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+pair p1(1, 2.0);
+// vs
+pair<int, double> p2(1, 2.0);
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -56,6 +59,16 @@
 \cppitem{Folding expressions}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template<typename ... Ts>
+auto sum_fold_exp(const Ts& ... ts) {
+  return (ts + ...);
+}
+
+template<typename ... Ts>
+auto print_fold(const Ts& ... ts)
+{
+  ((cout << ts << " "), ... );
+}
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -63,6 +76,17 @@
 \cppitem{New rules for auto deduction from braced-init-list}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+// error: not a single element
+auto x1{ 1, 2, 3 };
+
+// decltype(x2) is std::initializer_list<int>
+auto x2 = { 1, 2, 3 };
+
+// decltype(x3) is int, previously deduced to initializer_list<int>
+auto x3{ 3 };
+
+// decltype(x4) is double
+auto x4{ 3.0 };
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -77,6 +101,31 @@
 \cppitem{Lambda capture \texttt{this} by value}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+struct foo
+{
+  foo() : _x{0} {}
+  int _x;
+  auto log_by_ref() {
+    return [this]() { cout << _x << endl; };
+  }
+  auto log_by_val() {
+    return [*this]() { cout << _x << endl; };
+  }
+
+};
+
+int main(int argc, char *agrv[])
+{
+  struct foo f;
+  auto ref = f.log_by_ref();
+  auto val = f.log_by_val();
+  f._x = 1234;
+  ref();
+  val();
+  f._x = 4321;
+  ref();
+  val();
+}
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -91,6 +140,9 @@
 \cppitem{Nested namespaces}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+namespace A::B::C {
+  class foo;
+}
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -98,6 +150,14 @@
 \cppitem{Structured bindings}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template<typename T>
+pair<T, bool> racine(T d) {
+  if (d<0) return pair(-1, false);
+  return pair(sqrt(d), true);
+}
+
+auto [s, success] = racine(1998.0);
+if (success) cout << s << endl;
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -105,6 +165,9 @@
 \cppitem{Selection statements with initializer}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+if (auto res=m.insert({key,value}); res.second) {
+  cout<<key<<"/"<<value<<" inserted"<<endl;
+}
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -112,6 +175,18 @@
 \cppitem{constexpr if}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template <typename T> int compute(T x) {
+  // no () around consexpr
+  if constexpr (std::is_integral<T>::value) {
+    return x * x;
+  } else if constexpr (is_same<T, string>::value) {
+    return x.size();
+  } else if constexpr (is_base_of<foo, T>::value) {
+    x.bar();
+    return 0;
+  }
+  return 0;
+}
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -119,6 +194,7 @@
 \cppitem{UTF-8 Character Literals}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+char x = u8'x';
 \end{minted}
 
 %-------------------------------------------------------------------------------
