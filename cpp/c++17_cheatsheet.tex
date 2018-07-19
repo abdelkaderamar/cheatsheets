@@ -56,7 +56,6 @@ template <auto ... seq>
 struct my_integer_sequence {
   // Implementation here ...
 };
-
 // Explicitly pass type `int` as template argument.
 auto seq = std::integer_sequence<int, 0, 1, 2>();
 // Type is deduced to be `int`.
@@ -72,7 +71,6 @@ template<typename ... Ts>
 auto sum_fold_exp(const Ts& ... ts) {
   return (ts + ...);
 }
-
 template<typename ... Ts>
 auto print_fold(const Ts& ... ts)
 {
@@ -87,21 +85,14 @@ auto print_fold(const Ts& ... ts)
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 // error: not a single element
 auto x1{ 1, 2, 3 };
-
 // decltype(x2) is std::initializer_list<int>
 auto x2 = { 1, 2, 3 };
-
 // decltype(x3) is int, previously deduced to
 // initializer_list<int>
 auto x3{ 3 };
-
 // decltype(x4) is double
 auto x4{ 3.0 };
 \end{minted}
-
-%-------------------------------------------------------------------------------
-
-\columnbreak
 
 %-------------------------------------------------------------------------------
 
@@ -119,34 +110,41 @@ static_assert(addOne(1) == 2);
 
 %-------------------------------------------------------------------------------
 
+\cppitem{UTF-8 Character Literals}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+char x = u8'x';
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+
+\columnbreak
+
+%-------------------------------------------------------------------------------
+
 \cppitem{Lambda capture \texttt{this} by value}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-struct foo
-{
+struct foo {
   foo() : _x{0} {}
   int _x;
   auto log_by_ref() {
     return [this]() { cout << _x << endl; };
   }
   auto log_by_val() {
-    return [*this]() { cout << _x << endl; };
+    return [*this]() { cout<<_x<<endl;};
   }
-
 };
-
-int main(int argc, char *agrv[])
-{
-  struct foo f;
-  auto ref = f.log_by_ref();
-  auto val = f.log_by_val();
-  f._x = 1234;
-  ref();
-  val();
-  f._x = 4321;
-  ref();
-  val();
-}
+struct foo f;
+auto ref = f.log_by_ref();
+auto val = f.log_by_val();
+f._x = 1234;
+ref();  val(); // both 1234
+f._x = 4321;
+ref(); // 4321
+val(); // 1234
 \end{minted}
 
 %-------------------------------------------------------------------------------
@@ -171,8 +169,6 @@ namespace A::B::C {
 }
 \end{minted}
 
-\columnbreak
-
 %-------------------------------------------------------------------------------
 
 \cppitem{Structured bindings}
@@ -190,7 +186,7 @@ if (success) cout << s << endl;
 
 %-------------------------------------------------------------------------------
 
-\cppitem{Selection statements with initializer}
+\cppitem{Initializers in if and switch statements}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 if (auto res=m.insert({key,value}); res.second) {
@@ -198,6 +194,17 @@ if (auto res=m.insert({key,value}); res.second) {
 }
 \end{minted}
 
+%-------------------------------------------------------------------------------
+
+\cppitem{Removal of trigraphs}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+??= ??/ ??' ??( ??) ??! ??< ??> ??-
+\end{minted}
+
+
+%-------------------------------------------------------------------------------
+\columnbreak
 %-------------------------------------------------------------------------------
 
 \cppitem{constexpr if}
@@ -219,13 +226,14 @@ template <typename T> int compute(T x) {
 
 %-------------------------------------------------------------------------------
 
-\cppitem{UTF-8 Character Literals}
+\cppitem{Hexadecimal floating-point literals}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-char x = u8'x';
+cout << 0x10.1p0 << endl // 16.0625
+  << 0X0.8p0 << endl     // 0.5
+  << 0X50.8p5 << endl;   // 2576
 \end{minted}
 
-%-------------------------------------------------------------------------------
 
 \cppitem{Direct List Initialization of Enums}
 \begin{minted}
@@ -235,6 +243,52 @@ enum class color : char { red, blue, green };
 // must be non-narrowing, i.e 129 is an error
 color c1 { 3 }, c2 { 88 };
 \end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{[[fallthrough]] attribute}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+switch (i) {
+case 1: cout<<"one"<<endl; // warning
+case 2: cout<<"two"<<endl;
+[[fallthrough]];
+case 3 : cout<<"three"<<endl; // warning supressed
+}
+\end{minted}
+
+
+%-------------------------------------------------------------------------------
+
+\cppitem{[[nodiscard]] attribute}
+
+Can be applied to a type (function with that return type will be marked as
+[[nodiscard]])
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+[[nodiscard]] int foo() { return 1; };
+void bar() {
+  foo(); // Warning
+}\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{[[maybe\_unused]] attribute}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+[[maybe_unused]] static void f() {} // No warning
+[[maybe_unused]] int x = 42; // No warning
+\end{minted}
+
+
+%-------------------------------------------------------------------------------
+
+\cppitem{static\_assert without message}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+static_assert(VERSION >= 2);
+\end{minted}
+
 
 %-------------------------------------------------------------------------------
 
