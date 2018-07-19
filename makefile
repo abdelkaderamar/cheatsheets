@@ -1,4 +1,4 @@
-all: c++14_cheatsheet.pdf c++17_cheatsheet.pdf \
+all: c++14_lang_cheatsheet.pdf c++17_lang_cheatsheet.pdf \
 	cmake_cheatsheet.pdf
 
 %.pdf: cpp/%.tex
@@ -8,3 +8,5 @@ all: c++14_cheatsheet.pdf c++17_cheatsheet.pdf \
 	pdflatex -shell-escape   $<
 
 clean:
+	rm -f *.aux *.log
+
