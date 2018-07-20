@@ -1,7 +1,10 @@
 export TEXINPUTS=.:sty::
 
-all: c++14_lang_cheatsheet.pdf c++17_lang_cheatsheet.pdf \
+ALL_PDF = c++14_lang_cheatsheet.pdf \
+	c++17_lang_cheatsheet.pdf \
 	cmake_cheatsheet.pdf
+
+all: $(ALL_PDF)
 
 %.pdf: cpp/%.tex
 	pdflatex -shell-escape $?
@@ -11,3 +14,6 @@ all: c++14_lang_cheatsheet.pdf c++17_lang_cheatsheet.pdf \
 
 clean:
 	rm -f *.aux *.log *.dvi
+
+fullclean: clean
+	rm -rf $(ALL_PDF) _minted-*
