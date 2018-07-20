@@ -130,13 +130,22 @@
                                   {.2ex}%
                                   {.2ex}%x
                                   {\sffamily\bfseries}}
+
+  \newcommand{\cheatsheettitle}[1]{
+    \vspace{0.15cm}
+      \begin{tikzpicture}
+        \node [fill=darkgray, text=white, draw, rounded corners=4pt, minimum width=10cm, minimum height=1.5cm, inner sep=12pt]{\Huge\textbf{#1}};
+      \end{tikzpicture}
+      \vspace{0.02cm}
+    }
+
 \begin{document}
 \raggedright\
 
 \begin{center}
-  \Huge{\underline{C++14 Cheatsheet}}
+  \cheatsheettitle{C++14 Language New Features Cheatsheet}
 \end{center}
-\vspace{1cm}
+%\vspace{1cm}
 
 \footnotesize
 \begin{multicols}{2}
