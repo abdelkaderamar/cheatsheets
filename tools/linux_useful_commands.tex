@@ -1,0 +1,69 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{linux}
+
+
+\pdfinfo{
+  /Title (Latex Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (Linux)
+  /Keywords (Linux)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Linux Useful Commands}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+\begin{center}{\section{Text Files}}\end{center}
+  
+%-------------------------------------------------------------------------------
+
+\linuxitem{Interleave Lines of Two Text Files}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+paste -d '\n' file1 file2
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\columnbreak
+%-------------------------------------------------------------------------------
+
+\linuxitem{Feature}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+\end{minted}
+
+
+%-------------------------------------------------------------------------------
+\columnbreak
+%-------------------------------------------------------------------------------
+
+\linuxitem{Feature}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+\end{minted}
+
+
+%-------------------------------------------------------------------------------
+
+% \linuxitem{Feature}
+% \begin{minted}
+%   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+% \end{minted}
+%
+
+\end{multicols}
+
+\end{document}
+
+%bibtex : Garder la casse du titre d'une entrée : entourer de {}
