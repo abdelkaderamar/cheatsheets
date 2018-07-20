@@ -1,2 +1,97 @@
-bibtex : Garder la casse du titre d'une entrée : entourer de {}
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{texcheatsheet}
 
+
+\pdfinfo{
+  /Title (Latex Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (Latex)
+  /Keywords (Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Latex Cheatsheet}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+%-------------------------------------------------------------------------------
+
+\centering\section{Text properties}
+
+\begin{keys}{Font}
+  \textrm{Roman} &
+  \textbackslash textrm\{Roman\} \\
+  \textsf{Sans serif} &
+  \textbackslash textsf\{Sans serif\} \\
+  \texttt{Typewriter} &
+  \textbackslash texttt\{Typewriter\} \\
+  \textmd{Medium series} &
+  \textbackslash textmd\{Medium series\} \\
+  \textbf{Bold series} &
+  \textbackslash textbf\{Bold series\} \\
+  \textup{Upright shape} &
+  \textbackslash textup\{Upright shape\} \\
+  \textit{Italic shape} &
+  \textbackslash textit\{Italic shape\} \\
+  \textsl{Slanted shape} &
+  \textbackslash textsl\{Slanted shape\} \\
+  \textsc{Small Caps shape} &
+  \textbackslash textsc\{Small Caps shape\} \\
+  \emph{Emphasized} &
+  \textbackslash emph\{Emphasized\} \\
+  \textnormal{Document font} &
+  \textbackslash textnormal\{Document font\} \\
+  \underline{Underline} &
+  \textbackslash underline\{Underline\} \\
+\end{keys}
+
+\texitem{Text Size}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+\tiny \scriptsize \footnotesize \small \normalsize
+\large \Large \LARGE \huge  \Huge
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\columnbreak
+%-------------------------------------------------------------------------------
+
+\texitem{Feature}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+\end{minted}
+
+
+%-------------------------------------------------------------------------------
+\columnbreak
+%-------------------------------------------------------------------------------
+
+\texitem{Feature}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+\end{minted}
+
+
+%-------------------------------------------------------------------------------
+
+% \texitem{Feature}
+% \begin{minted}
+%   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+% \end{minted}
+%
+
+\end{multicols}
+
+\end{document}
+
+%bibtex : Garder la casse du titre d'une entrée : entourer de {}

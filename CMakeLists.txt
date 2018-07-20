@@ -10,3 +10,4 @@ set(ENV{TEXINPUTS} ".:${CHEATSHEETS_SOURCE_DIR}/sty::")
 
 Add_Latex_Document(cpp/c++14_lang_cheatsheet.tex MANGLE_TARGET_NAMES DEFAULT_PDF)
 Add_Latex_Document(cpp/c++17_lang_cheatsheet.tex MANGLE_TARGET_NAMES DEFAULT_PDF)
+Add_Latex_Document(tex/latex_cheatsheet.tex MANGLE_TARGET_NAMES DEFAULT_PDF)
