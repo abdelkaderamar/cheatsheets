@@ -92,6 +92,8 @@
 
     \centering\section{Working With Repositories}
 
+    %---------------------------------------------------------------------------
+    %-- BASIC COMMANDS
     \begin{keys}{Basic commands}
       Local repository status                & \texttt{git status} \\
       Stage a file/dir to commit list        & \texttt{git add <file or dir>} \\
@@ -106,6 +108,8 @@
       \texttt{git rm --cached <file>} \\
     \end{keys}
 
+    %---------------------------------------------------------------------------
+    %-- REPOSITORY STATUS
     \begin{keys}{Repository status}
       Unpublished commits           & \texttt{git log origin/master..HEAD} \\
       Display diff of unpublished commits  & \texttt{git diff origin/master} \\
@@ -113,6 +117,8 @@
       Remote repository information     & \texttt{git remote show origin} \\
     \end{keys}
 
+    %---------------------------------------------------------------------------
+    %-- BRANCHING
     \begin{keys}{Branching}
       Create a branch &
       \texttt{git checkout -b [name\_of\_your\_new\_branch]}
@@ -141,6 +147,8 @@
 
     \centering\section{Working With Files}
 
+    %---------------------------------------------------------------------------
+    %-- COMMIT
     \begin{keys}{Commit}
       Modify a commit message           &
       \texttt{git commit --amend} \\
@@ -158,9 +166,24 @@
       Revert range of commits (by hashes interval) &
       \texttt{git revert a867b4af..0766c053} \\
     \end{keys}
-%
+
+    %---------------------------------------------------------------------------
+    %-- LOGS
+    \begin{keys}{Logs}
+      Show commit logs           &
+      \texttt{git log [ -n <number>]} \\
+      Show commit logs           &
+      \texttt{git diff <commit hash>\textasciitilde \space  <commit hash>}
+      \newline or \newline
+      \texttt{git show <commit has>}\\
+    \end{keys}
+
+    %---------------------------------------------------------------------------
+
     \centering\section{Useful Tips}
 
+    %---------------------------------------------------------------------------
+    %-- MIRRORING
     \begin{keys}{Mirroring}
       Push to multiple Git repositories &
       \texttt{git remote add github \textbackslash \newline
