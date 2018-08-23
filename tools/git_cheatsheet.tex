@@ -103,7 +103,7 @@
       Dry run                                &
       \texttt{git command --dry-run} \\
       Unstage a file                         &
-      \texttt{git rm --cached <file> \\
+      \texttt{git rm --cached <file>} \\
     \end{keys}
 
     \begin{keys}{Repository status}
@@ -113,18 +113,29 @@
       Remote repository information     & \texttt{git remote show origin} \\
     \end{keys}
 
-   \centering\section{Github}
-
-   \begin{keys}{Access}
-     Change repo URL from https to ssh (replace user by the real username) &
-     \texttt{git remote set-url origin git+ssh://git@github.com/user/reponame.git} \\
-     Text                 & \texttt{Command} \\
-     Text                 & \texttt{Command} \\
-     Text                 & \texttt{Command} \\
-     Text                 & \texttt{Command} \\
-     Text                 & \texttt{Command} \\
-   \end{keys}
-
+    \begin{keys}{Branching}
+      Create a branch &
+      \texttt{git checkout -b [name\_of\_your\_new\_branch]}
+      \\
+      Change working branch &
+      \texttt{git checkout [name\_of\_your\_new\_branch]}
+      \\
+      Push the branch &
+      \texttt{git push origin [name\_of\_your\_new\_branch]}
+      \\
+      See all branches &
+      \texttt{git branch}
+      \\
+      Delete a branch on your local filesystem &
+      \texttt{git branch -d [name\_of\_your\_new\_branch]}
+      \\
+      Force the deletion of local branch on your filesystem &
+      \texttt{git branch -D [name\_of\_your\_new\_branch]}
+      \\
+      Delete the branch on github &
+      \texttt{git push origin :[name\_of\_your\_new\_branch]}
+      \\
+    \end{keys}
 
     \columnbreak
 
@@ -162,6 +173,14 @@
       \hspace*{0.5cm} git@bitbucket.org:aamar/my-project.git
       } \\
     \end{keys}
+
+    \centering\section{Github}
+
+    \begin{keys}{Access}
+      Change repo URL from https to ssh (replace user by the real username) &
+      \texttt{git remote set-url origin git+ssh://git@github.com/user/reponame.git} \\
+    \end{keys}
+
 %
 %    \begin{keys}{Something}
 %      Text                 & \texttt{Command} \\
