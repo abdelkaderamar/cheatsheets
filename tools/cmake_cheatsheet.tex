@@ -119,8 +119,6 @@
       get\_filename\_component(EXE \$\{CPP\} NAME\_WE ) \newline
       add\_executable ( \$\{EXE\} \$\{FILE\} ) \newline
       endforeach( CPP\_FILE )} \\
-      Add paths to linker search directories &
-     \texttt{link\_directories(<dir1> <dir2> ...)} \\
     \end{keys}
 
    \centering\section{Files}
@@ -154,7 +152,8 @@
         & \texttt{add\_definitions ( "-std=c++11" )} \\
         Add include directory &
         \texttt{Include\_Directories(\$\{Xerces\_INCLUDE\_DIRS\})} \\
-%      Text                 & \texttt{Command} \\
+        Add link directories &
+       \texttt{link\_directories(<dir1> <dir2> ...)} \\
     \end{keys}
 
     \centering\section{Tests}
