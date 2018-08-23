@@ -25,10 +25,8 @@
   \noindent    %<---- here
 
 \begin{center}{\section{Text Files}}\end{center}
-  
 %-------------------------------------------------------------------------------
-
-\linuxitem{Interleave Lines of Two Text Files}
+\linuxitem{Interleave lines of two text files}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
 paste -d '\n' file1 file2
@@ -38,11 +36,32 @@ paste -d '\n' file1 file2
 \columnbreak
 %-------------------------------------------------------------------------------
 
-\linuxitem{Feature}
+\begin{center}{\section{Packages}}\end{center}
+
+\linuxitem{List package content (before installing it)}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+apt-file update
+apt list <package name>
 \end{minted}
 
+\linuxitem{List (installed) package content}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+dpkg -L <package name>
+\end{minted}
+
+\linuxitem{Which package provides a file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+dpkg -S <file absolute path>
+\end{minted}
+
+\linuxitem{Find which package provides a file (not installed)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+apt-file search <file>
+\end{minted}
 
 %-------------------------------------------------------------------------------
 \columnbreak

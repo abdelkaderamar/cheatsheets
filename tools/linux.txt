@@ -1,0 +1,13 @@
+List package content (before installing it)
+apt-file update
+apt list <package name>
+
+List (installed) package content
+dpkg -L <package name>
+
+Which package provides a file
+dpkg -S <file absolute path>
+
+Find which package provides a file (not installed)
+apt-file search <file>
+
