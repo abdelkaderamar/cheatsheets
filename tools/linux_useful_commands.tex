@@ -36,13 +36,14 @@ paste -d '\n' file1 file2
 \columnbreak
 %-------------------------------------------------------------------------------
 
-<<<<<<< HEAD
 \linuxitem{exiftool - Renaming images}
-Renames all images in directory "DIR" according to the individual file's creation date in the form "YYYYmmdd_HHMMSS.ext".
+Renames all images in directory "DIR" according to the individual file's creation date in the form "YYYYmmdd\_HHMMSS.ext".
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
-exiftool "-FileName<CreateDate" -d "%Y%m%d_%H%M%S.%%e" DIR
-=======
+  exiftool "-FileName<CreateDate" \
+     -d "%Y%m%d_%H%M%S.%%e" DIR
+\end{minted}
+
 \begin{center}{\section{Packages}}\end{center}
 
 \linuxitem{List package content (before installing it)}
@@ -56,7 +57,6 @@ apt list <package name>
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
 dpkg -L <package name>
->>>>>>> bdc8f527710299098e29186704fea8be3835ae36
 \end{minted}
 
 \linuxitem{Which package provides a file}
