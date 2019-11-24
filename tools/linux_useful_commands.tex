@@ -82,6 +82,33 @@ Moves all images originally in directory "DIR" into a directory hierarchy organi
 exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" DIR
 \end{minted}
 
+\linuxitem{Feature}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{bash}
+udisksctl mount -b /dev/sdg1
+\end{minted}
+
+
+\linuxitem{Feature}
+Rename images in directory ``DIR'' into a directory hierarchy organized by ``Model''/year-month-day/date\_time.extension
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+  exiftool -o . '-FileName<${model}/${CreateDate}' -d '%Y-%m-%d/%Y%m%d_%H%M%S.%%e' .
+\end{minted}
+
+\linuxitem{Feature}
+Rename images in directory ``DIR'' into a directory hierarchy organized by ``Model''/year-month-day/date\_time.extension and preserve file date
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+  exiftool -o . '-FileName<${model}/${CreateDate}' -d '%Y-%m-%d/%Y%m%d_%H%M%S.%%e' . -P
+\end{minted}
+
+\linuxitem{Feature}
+Change or remove Camera Model Name tag from an image
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{tex}
+exiftool -'Model'= 20190607_213819.jpg
+\end{minted}
 
 %-------------------------------------------------------------------------------
 
