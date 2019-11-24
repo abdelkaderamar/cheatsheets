@@ -1,0 +1,6 @@
+---------------------------------------------------------------------------
+Move
+rsync -aXS --remove-source-files <source> <destination>
+Empty directories are not removed. This can be done with
+find . -type d -empty -delete
+---------------------------------------------------------------------------

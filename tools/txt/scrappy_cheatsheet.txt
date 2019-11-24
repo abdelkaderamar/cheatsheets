@@ -1,0 +1,11 @@
+Change user agent using scrapyproject/settings.py
+USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) '
+
+Change user agent using command line
+scrapy runspider -s USER_AGENT='Mozilla/5.0 (X11; Linux x86_64) ' spirder.py
+
+Change delay between two requests using scrappyproject/settings.py
+DOWNLOAD_DELAY
+
+Change delay between two requests using command line
+-s DOWNLOAD_DELAY=3

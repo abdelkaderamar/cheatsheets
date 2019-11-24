@@ -1,0 +1,27 @@
+Check if variable is defined			if [ -z ${var+x} ]; then echo 'unset'; else echo 'set'; fi
+
+Add 5 year and 3 months to JPG date		exiftool -AllDates+="5:3:0 0" -overwrite_original 
+
+Add a timespan to CreateDate and 
+DateTimeOriginal 				exiftool "-DateTimeOriginal-=12:07:00" "-CreateDate-=12:07:00" -overwrite_original
+
+Find jpg files without createdate               exiftool -filename -filemodifydate -createdate -r -if '(not $datetimeoriginal) and $filetype eq "JPEG"' .
+
+Print only tag value (replace CreateDate 
+with tag name) 					exiftool -s  -s -s '-CreateDate' 100_3890.jpg
+
+Print tag name and value with extra spaces      exiftool  -s -s '-CreateDate' 100_3890.jpg
+
+Print tag name (instead of description) and 
+its value					exiftool -s  '-CreateDate' 100_3890.jpg
+
+Set CreateDate and 
+DateTimeOriginal from FileModifyTime		exiftool '-datetimeoriginal<filemodifydate' '-createdate<filemodifydate' -overwrite_original DIR
+
+Set DateTimeOriginal from CreateDate 		exiftool '-datetimeoriginal<createdate' -overwrite_original .
+
+Set DateTimeOriginal				exiftool -xmp:dateTimeOriginal="2015:11:13 08:19:19.00+02:00" 2015-11-13_081919000_EF6E0_iOS.jpg
+
+check if a command exists			command -v <command_name>
+
+find the first match				find ... -print -quit

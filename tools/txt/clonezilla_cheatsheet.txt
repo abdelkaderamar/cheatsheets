@@ -1,0 +1,3 @@
+cat <imagename>.gz.a* | gzip -d -c | partclone.restore -W -o <output filepath> -L <log filepath>
+
+mount -o loop -t ext3 /dir/sda1.img /mnt/test

@@ -1,0 +1,16 @@
+Convert date <-> number
+package datenumber
+-----------------------------------------------------------
+Change datenumber language
+\usepackage[french]{datenumber}
+-----------------------------------------------------------
+Include tex file
+\input{filename}     % without .tex extension
+\include{filename}   % without .tex extension
+-----------------------------------------------------------
+\begin{itemize}
+\item $\Box$ a
+\item $\boxtimes$ b
+\item $\boxminus$ c
+\end{itemize}
+-----------------------------------------------------------

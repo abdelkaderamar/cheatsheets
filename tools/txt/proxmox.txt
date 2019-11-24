@@ -1,0 +1,11 @@
+shw -class disk -class storage				get disk info (serial to be used)
+qm set 100 -virtio2 /dev/disk/by-id/usb-Kingston_DataTraveler_3.0_08606E6D402EB040E817632B-0:0-part3
+							100 	VM id
+							-virtio2  virtual disk id (2 to 15)
+qm set 100 -delete virtio4				unattach disk4 from VM 100 
+
+
+root@proxmox:~# pct set 101 -mp0 /tmp/sdb2/,mp=/mnt/sdb2 
+root@proxmox:~# pct set 101 -mp1 /tmp/sdb3/,mp=/mnt/sdb3
+							mount directory in a container
+	
