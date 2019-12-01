@@ -25,3 +25,11 @@ Set DateTimeOriginal				exiftool -xmp:dateTimeOriginal="2015:11:13 08:19:19.00+0
 check if a command exists			command -v <command_name>
 
 find the first match				find ... -print -quit
+
+Update pip					pip install --upgrade pip
+
+Fix filename encoding				convmv -f iso-8859-1 -t utf8 --replace --notest -r <files or dir>
+						convmv -f utf8 -t iso-8859-1 --fixdouble --replace --notest -r  <files or dir>
+
+Remove non ascii characters			detox -s utf_8 -r  <dir>
+						detox -s utf_8  <files>
