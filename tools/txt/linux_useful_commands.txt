@@ -33,3 +33,85 @@ Fix filename encoding				convmv -f iso-8859-1 -t utf8 --replace --notest -r <fil
 
 Remove non ascii characters			detox -s utf_8 -r  <dir>
 						detox -s utf_8  <files>
+
+Download mp3 from youtube 			youtube-dl --extract-audio --audio-format mp3 <video URL>
+
+Find files and store them in an array (Bash4.4) readarray -d '' array < <(find . -name "$input" -print0)
+
+Split flac file using cue file			cuebreakpoints '<cue file>' | shnsplit -o flac '<audio flac file>' 
+
+Split mp3 using cue file			 mp3splt -c music.cue music.mp3 
+
+Increase volume by 200%				ffmpeg -i vid.mkv -vol 512 -vcodec copy output.mkv
+(-vol 256 => 100% no change)
+(-vol 512 => 200% double volume)
+(-vol 768 => 300% volume)
+
+If we want our volume to be half of the input volume:
+						ffmpeg -i input.wav -filter:a "volume=0.5" output.wav
+
+150% of current volume:
+						ffmpeg -i input.wav -filter:a "volume=1.5" output.wav
+
+list installed packages and sort them by size
+						dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n 
+
+test internet speed				curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+
+limit scp bandwith 
+(speed is in kilobits/s here 1000KB=8000/8)	scp -l 8000 file user@remote_host:remote_dir
+
+Sanitize file name				detox -v <file>
+						detox -v -r <dir> # not working when dir=.
+
+Mount a disk using udisksctl			udisksctl mount -b /dev/sde1
+
+Extract a clip from a video 			
+  - Start time 00:42:32
+  - Clip duration 2min21s			ffmpeg -ss 00:42:31 -i <input_file> -t 00:02:21 -vcodec copy -acodec copy <output_file>
+
+Convert mkv to mp4 file				ffmpeg -y -i 'video.mkv' -codec copy -strict -2 'video.mp4'
+
+Convert mkv to mp4 file (H264 codec)
+						ffmpeg -i clip.mkv -vcodec libx264 -acodec aac -strict -2 clip.mp4
+
+Convert audio track of a video to mp3  		ffmpeg -i "$in" -c:v copy -c:a mp3 "$out"
+
+Convert pdf file to a4				pdfjam --outfile out.pdf --paper a4paper in.pdf
+
+Remove empty directory				find . -type d -empty -delete
+
+Mout iso image					 sudo mount -o loop -t iso9660 /chemin/vers/image.iso /mnt
+						# replace iso9660 by auto
+
+
+Extract json attribute (using jq)		curl -s "https://hacker-news.firebaseio.com/v0/item/23475226.json?print=pretty" | jq -r '.time'
+
+Print the definition of a bash function		type <function_name>
+
+Export nfs share to two networks		/media/pi/toshiba2a/Zik 	192.168.1.0/24(rw,all_squash,anonuid=1000,anongid=1000,sync,no_subtree_check,insecure) 192.168.0.0/24(rw,all_squash,anonuid=1000,anongid=1000,sync,no_subtree_check,insecure)
+
+Show the active DNS servers			cat /etc/resolv.conf
+
+Afficher les priorités des interfaces réseaux	route -n
+
+Changement manuel de la priorité d'une 
+interface réseau (non permanent)		ifmetric wlan0 203
+
+fdupes (preserve more than one file but not
+all)						fdupes -d .
+						[1] ./b                                 
+						[2] ./c
+						[3] ./a
+
+						Set 1 of 1, preserve files [1 - 3, all]: 1,3
+
+						   [+] ./b
+						   [-] ./c
+						   [+] ./a
+
+fdupes: Exclude folder from exclusion 
+(--delete --noprompt to delete automatically)	fdupes -r --omitfirst -o name //myfavourite/directory/path /dir2 /dir3 
+
+
+
