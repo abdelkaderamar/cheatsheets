@@ -1,0 +1,8 @@
+Convert $@ to an array					array=( "$@" )
+Array length						${#ArrayName[@]}
+Slice array						A=( foo bar "a  b c" 42 )
+							B=("${A[@]:1:2}") # bar "a b c" 
+							C=("${A[@]:1}")   # bar "a b c" 42
+Last element of an array				output="${array[@]: -1}"
+							output="${@:$#}"   # $@ is different from an array $0 is the command name or bash for function
+

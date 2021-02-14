@@ -1,0 +1,11 @@
+Initialisation d'un projet git
+==============================
+git init
+git add gradle settings.gradle app/
+git commit -m "Initial revision"
+git remote add origin  git@home.git.amarfamily.eu:abdel/Tarek.git
+// if github repo was initialized with some files and also commited locally
+// you need to do
+// git pull origin master --allow-unrelated-histories
+git push -u origin master
+

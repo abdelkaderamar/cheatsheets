@@ -1,0 +1,2 @@
+List available AVD		emulator -list-avds
+Run an emulator			emulator @avd_name 
