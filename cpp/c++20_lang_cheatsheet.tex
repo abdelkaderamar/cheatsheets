@@ -1,0 +1,171 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++20 Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, C++20, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{C++20 Language New Features Cheatsheet}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+% \section{Function return type deduction}
+%     \texttt{auto f()}
+% \begin{minted}
+%     [frame=single,
+%     framesep=2mm,
+%     baselinestretch=1.2,
+%     fontsize=\footnotesize,
+%     ]{cpp}
+% auto f_cpp14() { return 1; }
+%
+% auto f_cpp11() -> int { return 1; }
+% \end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Designated initializers}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+struct book_config_t {
+  double total_amount;
+  double order_amount;
+}
+book_config_t config {
+ .total_amount = total_amount,
+ .order_amount = order_amount
+}
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Template in lambda}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+auto add = [&]<typename T>(T sum, 
+                           const book_row_t& row) 
+{ return sum + (_last_share_price*row.qty); };
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\columnbreak
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\columnbreak
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+% \cppitem{Feature}
+% \begin{minted}
+%   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+% \end{minted}
+%
+
+\end{multicols}
+
+\end{document}
