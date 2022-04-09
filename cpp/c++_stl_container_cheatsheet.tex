@@ -1,0 +1,211 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{C++ STL Containers Cheatsheet}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+% \section{Function return type deduction}
+%     \texttt{auto f()}
+% \begin{minted}
+%     [frame=single,
+%     framesep=2mm,
+%     baselinestretch=1.2,
+%     fontsize=\footnotesize,
+%     ]{cpp}
+% auto f_cpp14() { return 1; }
+%
+% auto f_cpp11() -> int { return 1; }
+% \end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{Sort elements in a container}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+// vector
+vector<int> v1{5, 3, 10, 2};
+sort(v1.begin(), v1.end());
+
+// array
+array<int, 5> a1{3, 2, 10, 5, 2};
+sort(a1.begin(), a1.end());
+
+// deque
+deque<int> dq1{3, 5, 1, 10, 7};
+sort(dq1.begin(), dq1.end());
+
+// forward_list
+forward_list<int> fl1{33, 5, 1, 10, 7};
+// error : no random iterator
+f// sort(fl1.begin(), fl2.end()); 
+l1.sort();
+
+// List
+list<int> l1{5, 3, 10, 2};
+// error std::sort needs random iterator
+// sort(l1.begin(), l1.end()); 
+l1.sort();
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\columnbreak
+%-------------------------------------------------------------------------------
+
+\cppitem{Defining a sort comparator}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+struct point_t {
+    int x, y;
+};
+
+vector<point_t> v1 { {2, 3}, {5, 6}, {1, 2}};
+
+// error => no comparaison operator
+sort(v1.begin(), v1.end()); 
+
+// method 1: operator < 
+bool operator<(const point_t& p1, const point_t& p2) {
+    if (p1.x == p2.x) return p1.y < p2.y;
+    return p1.x < p2.x;
+}
+
+// method 2: operator <
+struct point_t {
+    int x, y;
+
+    bool operator < (const point_t& other) {
+        if (x == other.x) return y < other.y;
+        return x < other.x;
+    }
+};
+
+// method 3: sort predicate
+struct point_comparator
+{
+  bool operator()(const point_t& p1, 
+                  const point_t& p2)
+  {
+      if (p1.x == p2.x) return p1.y < p2.y;
+      return p1.x < p2.x;
+  }
+};
+sort(v1.begin(), v1.end(), point_comparator());
+
+// method 4: using lambda expressions
+sort(v1.begin(), v1.end(),
+    [](const point_t &p1, const point_t &p2)
+     {
+       if (p1.x == p2.x)
+          return p1.y < p2.y;
+       return p1.x < p2.x;
+   });
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{.....}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+
+\columnbreak
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\cppitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+% \cppitem{Feature}
+% \begin{minted}
+%   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+% \end{minted}
+%
+
+\end{multicols}
+
+\end{document}
