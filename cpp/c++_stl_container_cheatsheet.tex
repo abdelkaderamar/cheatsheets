@@ -142,9 +142,18 @@ sort(v1.begin(), v1.end(),
 
 %-------------------------------------------------------------------------------
 
-\cppitem{-------}
+\cppitem{Print the content of a container}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+    vector<point_t> v1 { {2, 3}, {5, 6}, {1, 2}};
+// C++11    
+copy(v1.begin(), v1.end(), 
+     ostream_iterator<point_t>(cout, " "));
+cout << endl;
+// C++20
+ranges::copy(v1, 
+             ostream_iterator<point_t>(cout, " "));
+cout << endl;
 
 \end{minted}
 
