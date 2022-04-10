@@ -126,11 +126,11 @@ sort(v1.begin(), v1.end(),
 
 %-------------------------------------------------------------------------------
 
-\cppitem{.....}
+\cppitem{Sort container in descending order}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-
-
+std::sort(container.begin(), container.end(), 
+          std::greater<>());
 \end{minted}
 
 %-------------------------------------------------------------------------------
