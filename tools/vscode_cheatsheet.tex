@@ -1,0 +1,147 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{toolscheatsheet}
+
+
+\pdfinfo{
+  /Title (VSCODE Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (VSCODE, IDE, Editor, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{VSCODE Cheatsheet}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+%-------------------------------------------------------------------------------
+
+\toolsitem{Switch between source/header file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Alt - O
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\toolsitem{Folding}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Fold the level [n] (0 to fold all)
+   Ctrl - k / Ctrl [n]   
+Unfold all
+   Ctrl - k / Ctrl j
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\columnbreak
+
+%-------------------------------------------------------------------------------
+
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\columnbreak
+%-------------------------------------------------------------------------------
+
+\toolsitem{Switch between editor/terminal}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Open keybindings.json (using Ctrl+Shift+P then 
+Open Keyboard Shortcuts File) and add the following
+{
+  "key": "shift+alt+t",
+  "command": "workbench.action.terminal.focus"
+},
+{
+  "key": "shift+alt+t",
+  "command":
+    "workbench.action.focusActiveEditorGroup",
+  "when": "terminalFocus"
+}
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+\toolsitem{-------}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+
+\end{minted}
+
+%-------------------------------------------------------------------------------
+
+% \toolsitem{Feature}
+% \begin{minted}
+%   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+% \end{minted}
+%
+
+\end{multicols}
+
+\end{document}
