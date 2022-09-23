@@ -1,0 +1,43 @@
+import sys
+import yaml
+
+from rich.console import Console
+
+from abstract_generator import abstract_generator
+
+class yaml_to_latex_generator(abstract_generator):
+
+    def __init__(self, filename, line_per_col):
+        super().__init__(line_per_col)
+        self.console = Console()
+        self.console.print("Initialializing the generator")
+        with open(filename, 'r') as yaml_file:
+            self.yaml_content=yaml.safe_load(yaml_file)
+        self.console.print(self.yaml_content)
+        print(self.yaml_content)
+        print(self.yaml_content['items'][0]['item']['content'])
+        print(self.yaml_content['items'][1]['item']['content'])
+
+    def generate(self, filename):
+        main_title=self.yaml_content['title']
+        items=self.yaml_content['items']
+        latex_file=filename[0:filename.lower().rfind('.yaml')] + '-yaml.tex'
+        self.do_generate(main_title=main_title, items=items, latex_file=latex_file)
+
+
+        
+def main():
+    if len(sys.argv) < 2:
+        print(f"Syntax error.")
+        print("Usage: gen_cs <yaml file>")
+        sys.exit(1)
+    if len(sys.argv) >= 3:
+        line_per_col=int(sys.argv[2])
+    else:
+        line_per_col=abstract_generator.LINE_NUMBER_PER_COLUMN
+    print(line_per_col)
+    generator=yaml_to_latex_generator(sys.argv[1], line_per_col)
+    generator.generate(sys.argv[1])
+
+if __name__ == '__main__':
+    main()
