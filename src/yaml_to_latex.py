@@ -14,9 +14,8 @@ class yaml_to_latex_generator(abstract_generator):
         with open(filename, 'r') as yaml_file:
             self.yaml_content=yaml.safe_load(yaml_file)
         self.console.print(self.yaml_content)
-        self.console.print(self.yaml_content)
-        print(self.yaml_content['items'][0]['item']['content'])
-        print(self.yaml_content['items'][1]['item']['content'])
+        # self.console.print(self.yaml_content['items'][0]['item']['content'])
+        # self.console.print(self.yaml_content['items'][1]['item']['content'])
 
     def generate(self, filename):
         main_title=self.yaml_content['title']
