@@ -18,6 +18,16 @@ Foreach (CPP_FILE ${CPP_FILES})
     Add_Latex_Document(${CPP_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(CPP_FILE)
 
+# BASH
+Set(BASH_FILES
+     "bash/tex/bash_cs-cheatsheet.tex"
+     "bash/tex/bash_cs-colourful.tex"
+     "bash/tex/bash_cs-colourful-updated.tex"
+    )
+Foreach (BASH_FILE ${BASH_FILES})
+    Add_Latex_Document(${BASH_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(BASH_FILE)
+
 # MISC
 Set(MISC_FILES 
     "misc/tex/yaml_cs-colourful.tex" 
