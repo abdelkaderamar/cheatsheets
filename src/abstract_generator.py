@@ -29,7 +29,15 @@ class abstract_generator:
             if item == 'newpage':
                 self.generated_content += self.add_newpage()
                 continue
-            self.generated_content+=self.generate_item(item, self.templat_item)
+            if item == 'end-section':
+                self.generated_content += self.add_endsection()
+                continue
+            if isinstance(item, dict):
+                if 'item' in item:
+                    self.generated_content+=self.generate_item(item, self.templat_item)
+                elif 'section' in item:
+                    section_name=item['section']
+                    self.generated_content+=self.add_section(section_name)
         self.generated_content+=self.template_content[self.end:]
         
         title=main_title
@@ -67,6 +75,12 @@ class abstract_generator:
         newpage += "\\vspace*{1cm}\n"
         newpage += "\\begin{multicols}{3}"
         return newpage
+    
+    def add_endsection(self):
+        return "\n\n\\end{textbox}\n\n"
+
+    def add_section(self, section_name:str) -> str:
+        return "\n\\begin{textbox}{" + section_name + "}\n"
 
 class abstract_md_to_tex_generator(abstract_generator):
 
@@ -96,6 +110,15 @@ class abstract_md_to_tex_generator(abstract_generator):
                         break
                     elif l.strip() == '#- newpage':
                         item = 'newpage'
+                        data['items'].append(item)
+                        break
+                    elif l.lower().startswith('#- section:'):
+                        section_name=l[len('#- section:'):].strip().rstrip()
+                        item={'section': section_name}
+                        data['items'].append(item)
+                        break
+                    elif l.lower().startswith('#- end-section'):
+                        item = 'end-section'
                         data['items'].append(item)
                         break
 
