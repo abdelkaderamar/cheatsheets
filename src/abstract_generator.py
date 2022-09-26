@@ -6,11 +6,11 @@ class abstract_generator:
 
     LINE_NUMBER_PER_COLUMN=82
 
-    def __init__(self, tex_template='template_cheatsheet.tex'):
+    def __init__(self, tex_template='cheatsheet-template.tex'):
         self.console = Console()
         self.console.print("Initialializing the generator")
 
-        with open(tex_template, 'r') as template_file:
+        with open('templates/' + tex_template, 'r') as template_file:
             self.template_content=template_file.read()
         self.start=self.template_content.index('%%BEGIN_ITEM%%')
         print(self.template_content.index('%%END_ITEM%%'))
@@ -45,6 +45,15 @@ class abstract_generator:
         item_latex = item_latex.replace('%%ITEM_CONTENT%%', content)
         return item_latex
 
+    def get_outputfilename(self, filename: str, tex_template: str, extension: str) -> str:
+        suffix='-' + tex_template.replace('-template', '')
+        latex_filename=filename[0:filename.lower().rfind(extension)] + suffix
+        idx=latex_filename.rfind('/')
+        if idx != -1:
+            latex_filename=latex_filename[0:idx] + "/tex" + latex_filename[idx:]
+        else:
+            latex_filename='tex/' + latex_filename
+        return latex_filename
 
     def add_columnbreak(self):
         columnbreak = '\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n'

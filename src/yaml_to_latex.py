@@ -20,7 +20,8 @@ class yaml_to_latex_generator(abstract_generator):
     def generate(self, filename):
         main_title=self.yaml_content['title']
         items=self.yaml_content['items']
-        latex_file=filename[0:filename.lower().rfind('.yaml')] + '-yaml.tex'
+        # latex_file=filename[0:filename.lower().rfind('.yaml')] + '-yaml.tex'
+        latex_file=self.get_outputfilename(filename=filename, tex_template='yaml.tex', extension='.yaml')
         self.do_generate(main_title=main_title, items=items, latex_file=latex_file)
 
 

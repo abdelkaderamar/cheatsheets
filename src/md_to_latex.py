@@ -9,7 +9,7 @@ from abstract_generator import abstract_generator
 
 class md_to_latex_generator(abstract_generator):
 
-    def __init__(self, filename: str, tex_template = 'template_cheatsheet.tex'):
+    def __init__(self, filename: str, tex_template = 'cheatsheet-template.tex'):
         super().__init__(tex_template=tex_template)
         self.console = Console()
 
@@ -54,8 +54,8 @@ class md_to_latex_generator(abstract_generator):
                     data['items'].append({'item': item})
         items=data['items']
         print(f"{len(items)} items")
-        latex_file=filename[0:filename.lower().rfind('.md')] + '-md.tex'
-        self.do_generate(data['items'], main_title, latex_file)
+        latex_filename=self.get_outputfilename(filename, tex_template=tex_template, extension='.md')
+        self.do_generate(data['items'], main_title, latex_filename)
 
 
 
