@@ -9,8 +9,8 @@ from abstract_generator import abstract_generator
 
 class md_to_latex_generator(abstract_generator):
 
-    def __init__(self, filename: str, line_per_col: int):
-        super().__init__(line_per_col=line_per_col)
+    def __init__(self, filename: str, tex_template = 'template_cheatsheet.tex'):
+        super().__init__(tex_template=tex_template)
         self.console = Console()
 
         with open(filename, 'r') as f:
@@ -53,13 +53,13 @@ class md_to_latex_generator(abstract_generator):
 def main():
     if len(sys.argv) < 2:
         print(f"Syntax error.")
-        print("Usage: gen_cs <yaml file>")
+        print("Usage: gen_cs <md file> [tex_template]")
         sys.exit(1)
+    
     if len(sys.argv) >= 3:
-        line_per_col=int(sys.argv[2])
+        generator=md_to_latex_generator(sys.argv[1], tex_template=sys.argv[2])
     else:
-        line_per_col=abstract_generator.LINE_NUMBER_PER_COLUMN
-    generator=md_to_latex_generator(sys.argv[1], line_per_col)
+        generator=md_to_latex_generator(sys.argv[1])
     # generator.generate()
 
 if __name__ == '__main__':
