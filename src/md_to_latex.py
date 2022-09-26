@@ -29,6 +29,15 @@ class md_to_latex_generator(abstract_generator):
                 current_content=''
                 l=md_content[i]
                 while not l.startswith('#---------') and i < len(md_content)-1:
+                    if l.strip() == '#- columnbreak':
+                        item = 'columnbreak'
+                        data['items'].append(item)
+                        break
+                    elif l.strip() == '#- newpage':
+                        item = 'newpage'
+                        data['items'].append(item)
+                        break
+
                     if l.startswith('title:'):
                         current_title=l[len('title:'):].strip().rstrip()
                     elif l.strip() != '' :

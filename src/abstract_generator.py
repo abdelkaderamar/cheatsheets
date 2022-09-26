@@ -23,7 +23,7 @@ class abstract_generator:
         # Add items & columnbreaks
         for item in items:
             self.console.print(item)
-            if item == 'linebreak':
+            if item == 'columnbreak':
                 self.generated_content += self.add_columnbreak()
                 continue
             if item == 'newpage':
