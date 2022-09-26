@@ -1,0 +1,231 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{C++17 Language New Features Cheatsheet}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Template argument deduction for class templates}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+pair p1(1, 2.0);
+// vs
+pair<int, double> p2(1, 2.0);
+\end{minted}
+
+\cppitem{Declaring non-type template parameters with auto}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template <auto ... seq>
+struct my_integer_sequence {
+  // Implementation here ...
+};
+// Explicitly pass type `int` as template argument.
+auto seq = std::integer_sequence<int, 0, 1, 2>();
+// Type is deduced to be `int`.
+auto seq2 = my_integer_sequence<0, 1, 2>();
+\end{minted}
+
+\cppitem{Folding expressions}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template<typename ... Ts>
+auto sum_fold_exp(const Ts& ... ts) {
+  return (ts + ...);
+}
+template<typename ... Ts>
+auto print_fold(const Ts& ... ts)
+{
+  ((cout << ts << " "), ... );
+}
+\end{minted}
+
+\cppitem{New rules for auto deduction from braced-init-list}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+// error: not a single element
+auto x1{ 1, 2, 3 };
+// decltype(x2) is std::initializer_list<int>
+auto x2 = { 1, 2, 3 };
+// decltype(x3) is int, previously deduced to
+// initializer_list<int>
+auto x3{ 3 };
+// decltype(x4) is double
+auto x4{ 3.0 };
+\end{minted}
+
+\cppitem{constexpr lambda}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+auto identity = [] (int n) constexpr { return n; };
+static_assert(identity(123) == 123);
+
+constexpr int addOne(int n) {
+  return [n] { return n + 1; }();
+}
+static_assert(addOne(1) == 2);
+\end{minted}
+
+\cppitem{UTF-8 Character Literals}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+char x = u8'x';
+\end{minted}
+
+\cppitem{Lambda capture \texttt{this} by value}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+struct foo {
+  foo() : _x{0} {}
+  int _x;
+  auto log_by_ref() {
+    return [this]() { cout << _x << endl; };
+  }
+  auto log_by_val() {
+    return [*this]() { cout<<_x<<endl;};
+  }
+};
+struct foo f;
+auto ref = f.log_by_ref();
+auto val = f.log_by_val();
+f._x = 1234;
+ref();  val(); // both 1234
+f._x = 4321;
+ref(); // 4321
+val(); // 1234
+\end{minted}
+
+\cppitem{Inline variables}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+struct S { int x; };
+inline S x1 = S{321};
+\end{minted}
+
+\cppitem{Nested namespaces}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+namespace A::B::C {
+  class foo;
+}
+\end{minted}
+
+\cppitem{Structured bindings}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template<typename T>
+pair<T, bool> racine(T d) {
+  if (d<0) return pair(-1, false);
+  return pair(sqrt(d), true);
+}
+
+auto [s, success] = racine(1998.0);
+if (success) cout << s << endl;
+\end{minted}
+
+\cppitem{Initializers in if and switch statements}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+if (auto res=m.insert({key,value}); res.second) {
+  cout<<key<<"/"<<value<<" inserted"<<endl;
+}
+\end{minted}
+
+\cppitem{Removal of trigraphs}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+??= ??/ ??' ??( ??) ??! ??< ??> ??-
+\end{minted}
+
+\cppitem{constexpr if}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+template <typename T> int compute(T x) {
+  // no () around consexpr
+  if constexpr (std::is_integral<T>::value) {
+    return x * x;
+  } else if constexpr (is_same<T, string>::value) {
+    return x.size();
+  } else if constexpr (is_base_of<foo, T>::value) {
+    x.bar();
+    return 0;
+  }
+  return 0;
+}
+\end{minted}
+
+\cppitem{Hexadecimal floating-point literals}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+cout << 0x10.1p0 << endl // 16.0625
+  << 0X0.8p0 << endl     // 0.5
+  << 0X50.8p5 << endl;   // 2576
+\end{minted}
+
+\cppitem{Direct List Initialization of Enums}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+// underlying type must be fixed (char here)
+enum class color : char { red, blue, green };
+// must be non-narrowing, i.e 129 is an error
+color c1 { 3 }, c2 { 88 };
+\end{minted}
+
+\cppitem{[[fallthrough]] attribute}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+switch (i) {
+case 1: cout<<"one"<<endl; // warning
+case 2: cout<<"two"<<endl;
+[[fallthrough]];
+case 3 : cout<<"three"<<endl; // warning supressed
+}
+\end{minted}
+
+\cppitem{[[nodiscard]] attribute}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Can be applied to a type (function with that return type will be marked as
+[[nodiscard]])
+[[nodiscard]] int foo() { return 1; };
+void bar() {
+  foo(); // Warning
+\end{minted}
+
+\cppitem{[[maybe\_unused]] attribute}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+[[maybe_unused]] static void f() {} // No warning
+[[maybe_unused]] int x = 42; // No warning
+\end{minted}
+
+\cppitem{static\_assert without message}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+static_assert(VERSION >= 2);
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}
