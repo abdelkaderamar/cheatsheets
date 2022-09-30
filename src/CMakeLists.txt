@@ -13,7 +13,11 @@ Set(CPP_FILES
     "cpp/tex/c++17-lang_cs-colourful.tex" 
     "cpp/tex/c++17-lang_cs-colourful-updated.tex" 
     "cpp/tex/c++17-lang_cs-cheatsheet.tex"
-    "cpp/tex/c++17-lang_cs-yaml.tex")
+    "cpp/tex/c++17-lang_cs-yaml.tex"
+    "cpp/tex/c++14-lang_cs-cheatsheet.tex"
+    "cpp/tex/c++14-lang_cs-colourful-updated.tex"
+    "cpp/tex/c++14-lang_cs-colourful.tex"
+)
 Foreach (CPP_FILE ${CPP_FILES})
     Add_Latex_Document(${CPP_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(CPP_FILE)
@@ -27,6 +31,16 @@ Set(BASH_FILES
 Foreach (BASH_FILE ${BASH_FILES})
     Add_Latex_Document(${BASH_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(BASH_FILE)
+
+# PYTHON
+Set(PYTHON_FILES
+     "python/tex/python-cheatsheet.tex"
+     "python/tex/python-colourful.tex"
+     "python/tex/python-colourful-updated.tex"
+     )
+Foreach (PYTHON_FILE ${PYTHON_FILES})
+    Add_Latex_Document(${PYTHON_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(PYTHON_FILE)
 
 # MISC
 Set(MISC_FILES 

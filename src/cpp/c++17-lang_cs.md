@@ -1,5 +1,5 @@
 main_title: C++17 Language New Features Cheatsheet
-
+lang: cpp
 #-------------------------------------------------------------------------------
 title: Template argument deduction for class templates
 pair p1(1, 2.0);

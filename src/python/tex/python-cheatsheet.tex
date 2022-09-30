@@ -1,0 +1,86 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Python cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Sort a list of objects}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+class stock:
+    def __init__(self, name, ticker, isin):
+        self.name = name
+        self.ticker = ticker
+        self.isin = isin
+sorted_stocks=sorted(stocks, key=lambda s: s.ticker, reverse=True)
+stocks.sort(key=lambda s : s.ticker, reverse=True)
+
+\end{minted}
+
+\cppitem{Sort a dictionary by key}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+sorted_stocks_dict = {key: val for key, val     
+    in sorted(stocks_dict.items(), key=lambda kvp : kvp[0])}
+
+\end{minted}
+
+\cppitem{Sort a dictionary by value (define \_\_lt\_\_ or \_\_gt\_\_)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+class stock:
+    def __init__(self, name, ticker, isin):
+        self.name = name
+        self.ticker = ticker
+        self.isin = isin
+    def __lt__(self, other):
+        return self.name < other.name
+sorted_stocks_dict = {key: val for key, val     
+    in sorted(stocks_dict.items(), key=lambda kvp : kvp[1])}
+
+\end{minted}
+
+\cppitem{Remove a list elements from another list}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+watchlist=['SGO.PA', 'GLE.PA', 'LVMH.PA', 'MT.PA', 'ACA.PA']
+banks=['GLE.PA', 'ACA.PA', 'BNP.PA']
+watchlist=[ticker for ticker in watchlist if ticker not in banks]
+
+\end{minted}
+
+\cppitem{Check if a dictionary is included in another dictionary and get the difference}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+included=set(stocks_dict2.items()).issubset(set(stocks_dict1.items()))
+diff={key: value for (key, value) in stocks_dict1.items() 
+    if (key, value) not in stocks_dict2.items()}
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}

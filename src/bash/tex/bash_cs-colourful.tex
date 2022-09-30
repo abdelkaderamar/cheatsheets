@@ -32,21 +32,23 @@
 
 
 
-\begin{textbox}{Strings}
-
-\begin{codebox}{cpp}{Remove newlines from string}
-${str//[$'\t\r\n ']} 
-
-\end{codebox}
-
-
-\end{textbox}
-
 \section{Strings}
-\begin{codebox}{cpp}{Remove newlines from string}
+
+\begin{codebox}{bash}{Remove newlines from string}
 ${str//[$'\t\r\n ']} 
 
 \end{codebox}
+
+\begin{codebox}{bash}{Replace some characters by another}
+mod=${orig//[xyz]/_}
+
+\end{codebox}
+
+\begin{codebox}{bash}{Delete line containing a pattern}
+sed 's/pattern/d' file.txt
+
+\end{codebox}
+
 
 %---------------------------------------------
 \AtNextBibliography{\footnotesize}

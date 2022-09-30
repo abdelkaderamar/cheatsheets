@@ -15,7 +15,7 @@
 \raggedright\
 
 \begin{center}
-  \cheatsheettitle{Yaml Cheatsheet
+  \cheatsheettitle{Linux Monitoring Cheatsheet
 }
 \end{center}
 %\vspace{0.5cm}
@@ -26,17 +26,10 @@
   \noindent    %<---- here
 
 
-\cppitem{Multiline string}
+\cppitem{Current boot logs}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-Multilines value transformed to one line with eol added at the end
-key: >
-Multilines value transformed to one line without eol added at the end
-key: >-
-Multilines value kept unchanged with eol added at the end
-key: |
-Multilines value kept unchanged without eol at the end.
-key: |-
+journalctl -b
 
 \end{minted}
 

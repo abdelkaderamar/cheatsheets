@@ -9,7 +9,7 @@
 
 %-------------------------
 
-\title{\color{w3schools}Bash Cheatsheet
+\title{\color{w3schools}Linux Monitoring Cheatsheet
 }
 %\author{Abdelkader Amar}
 %\date{\today}
@@ -41,20 +41,8 @@
 
 
 
-\section{Strings}
-
-\begin{codebox}{bash}{Remove newlines from string}
-${str//[$'\t\r\n ']} 
-
-\end{codebox}
-
-\begin{codebox}{bash}{Replace some characters by another}
-mod=${orig//[xyz]/_}
-
-\end{codebox}
-
-\begin{codebox}{bash}{Delete line containing a pattern}
-sed 's/pattern/d' file.txt
+\begin{codebox}{bash}{Current boot logs}
+journalctl -b
 
 \end{codebox}
 

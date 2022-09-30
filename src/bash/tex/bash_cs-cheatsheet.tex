@@ -26,10 +26,26 @@
   \noindent    %<---- here
 
 
+\section{Strings}
+
 \cppitem{Remove newlines from string}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 ${str//[$'\t\r\n ']} 
+
+\end{minted}
+
+\cppitem{Replace some characters by another}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+mod=${orig//[xyz]/_}
+
+\end{minted}
+
+\cppitem{Delete line containing a pattern}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+sed 's/pattern/d' file.txt
 
 \end{minted}
 

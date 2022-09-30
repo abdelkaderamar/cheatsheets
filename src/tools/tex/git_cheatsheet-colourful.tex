@@ -1,0 +1,271 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}GIT Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\section{Working With Repositories}
+
+\subsection{Basic commands}
+
+\begin{codebox}{shell}{Local repository status}
+git status
+
+\end{codebox}
+
+\begin{codebox}{shell}{Stage a file/dir to commit list}
+git add <file or dir>
+
+\end{codebox}
+
+\begin{codebox}{shell}{Commit (with text editor)}
+git commit
+
+\end{codebox}
+
+\begin{codebox}{shell}{Commit (with commit message)}
+git commit -m "message"
+
+\end{codebox}
+
+\begin{codebox}{shell}{Send committed modification to remote repository (master branch)}
+git push origin master
+
+\end{codebox}
+
+\begin{codebox}{shell}{Verbose mode}
+git command --verbose
+# or 
+git command -v
+
+\end{codebox}
+
+\begin{codebox}{shell}{Dry run}
+git command --dry-run
+
+\end{codebox}
+
+\begin{codebox}{shell}{Unstage a file}
+git rm --cached <file>
+
+\end{codebox}
+
+\section{REPOSITORY STATUS}
+
+\begin{codebox}{shell}{Unpublished commits}
+git log origin/master..HEAD
+
+\end{codebox}
+
+\begin{codebox}{shell}{Display diff of unpublished commits}
+git diff origin/master
+
+\end{codebox}
+
+\begin{codebox}{shell}{Display diff of unpublished commits}
+git diff origin/master..HEAD
+
+\end{codebox}
+
+\begin{codebox}{shell}{Remote repository information}
+git remote show origin
+
+\end{codebox}
+
+\subsection{Branch}
+
+\begin{codebox}{shell}{Create a branch}
+git branch <branch name>
+
+\end{codebox}
+
+\begin{codebox}{shell}{Switch to a branch}
+git checkout <branch name>
+
+\end{codebox}
+
+\begin{codebox}{shell}{}
+Create and switch to a branch
+git checkout <branch name>
+
+\end{codebox}
+
+\begin{codebox}{shell}{}
+Delete a branch
+git branch -d <branch name>
+
+\end{codebox}
+
+\begin{codebox}{shell}{Get the current branch (starred)(method 1/2)}
+git branch
+
+\end{codebox}
+
+\begin{codebox}{shell}{Get the current branch (method 2/2)}
+git rev-parse --abbrev-ref HEAD
+
+\end{codebox}
+
+\section{Github}
+
+\begin{codebox}{shell}{Change repo URL from https to ssh (replace user by the real username)}
+git remote set-url origin git+ssh://git@github.com/user/reponame.git
+
+\end{codebox}
+
+\subsection{Branching}
+
+\begin{codebox}{shell}{Create a branch}
+git checkout -b [name_of_your_new_branch]
+
+\end{codebox}
+
+\begin{codebox}{shell}{Change working branch}
+git checkout [name_of_your_new_branch]
+
+\end{codebox}
+
+\begin{codebox}{shell}{Push the branch}
+git push origin [name_of_your_new_branch]
+
+\end{codebox}
+
+\begin{codebox}{shell}{See all branches}
+git branch
+
+\end{codebox}
+
+\begin{codebox}{shell}{Delete a branch on your local filesystem}
+git branch -d [name_of_your_new_branch]
+
+\end{codebox}
+
+\begin{codebox}{shell}{Force the deletion of local branch on your filesystem}
+git branch -D [name_of_your_new_branch]
+
+\end{codebox}
+
+\begin{codebox}{shell}{Delete the branch on github}
+git push origin :[name_of_your_new_branch]
+
+\end{codebox}
+
+\section{Working With Files}
+
+\begin{codebox}{shell}{Modify a commit message}
+git commit --amend
+
+\end{codebox}
+
+\begin{codebox}{shell}{}
+Undo commit
+git commit -m "message"
+git reset HEAD~
+#<< edit files as necessary >>
+git add <...>
+git commit -c ORIG_HEAD
+
+\end{codebox}
+
+\begin{codebox}{shell}{Revert one or more (n) commit and keep modifs}
+git reset --soft HEAD~n
+
+\end{codebox}
+
+\begin{codebox}{shell}{Revert one or more (n) commit and undo modifs}
+git reset --hard HEAD~n
+
+\end{codebox}
+
+\begin{codebox}{shell}{Revert one or more commits (by hashes)}
+git revert a867b4af 25eee4ca 0766c053
+
+\end{codebox}
+
+\begin{codebox}{shell}{Revert the last two commits}
+git revert HEAD~2..HEAD
+
+\end{codebox}
+
+\begin{codebox}{shell}{Revert range of commits (by hashes interval)}
+git revert a867b4af..0766c053
+
+\end{codebox}
+
+\begin{codebox}{shell}{Unstage a file}
+git restore --staged <added file
+
+\end{codebox}
+
+\subsection{Logs}
+
+\begin{codebox}{shell}{Show commit logs}
+git log [ -n <number>]
+
+\end{codebox}
+
+\begin{codebox}{shell}{Show commit logs}
+git diff <commit hash>~   <commit hash>
+# or 
+ git show <commit hash>
+
+\end{codebox}
+
+\section{Useful Tips}
+
+\subsection{Mirroring}
+
+\begin{codebox}{shell}{Push to multiple Git repositories}
+git remote add github \
+      git@github.com:aamar/my-project.git 
+git remote add bb \ 
+      git@bitbucket.org:aamar/my-project.git 
+git remote set-url ---add ---push origin \
+      git@github.com:aamar/my-project.git
+git remote set-url ---add ---push origin \
+      git@bitbucket.org:aamar/my-project.git
+
+\end{codebox}
+
+\section{Github}
+
+\begin{codebox}{shell}{Change repo URL from https to ssh (replace user by the real username)}
+git remote set-url origin git+ssh://git@github.com/user/reponame.git
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}

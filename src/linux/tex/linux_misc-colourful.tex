@@ -9,7 +9,7 @@
 
 %-------------------------
 
-\title{\color{w3schools}Yaml Cheatsheet
+\title{\color{w3schools}Linux Monitoring Cheatsheet
 }
 %\author{Abdelkader Amar}
 %\date{\today}
@@ -32,15 +32,8 @@
 
 
 
-\begin{codebox}{yaml}{Multiline string}
-Multilines value transformed to one line with eol added at the end
-key: >
-Multilines value transformed to one line without eol added at the end
-key: >-
-Multilines value kept unchanged with eol added at the end
-key: |
-Multilines value kept unchanged without eol at the end.
-key: |-
+\begin{codebox}{bash}{Current boot logs}
+journalctl -b
 
 \end{codebox}
 

@@ -19,7 +19,7 @@ class abstract_generator:
         self.generated_content=self.template_content[0:self.start]
 
     
-    def do_generate(self, items, main_title, latex_file):
+    def do_generate(self, items, lang, main_title, latex_filename):
         # Add items & columnbreaks
         for item in items:
             self.console.print(item)
@@ -38,11 +38,16 @@ class abstract_generator:
                 elif 'section' in item:
                     section_name=item['section']
                     self.generated_content+=self.add_section(section_name)
+                elif 'subsection' in item:
+                    subsection_name=item['subsection']
+                    self.generated_content+=self.add_subsection(subsection_name)
+
         self.generated_content+=self.template_content[self.end:]
         
         title=main_title
         self.generated_content=self.generated_content.replace('%%MAIN_TITLE%%', title)
-        with open(latex_file, 'w') as gen_file:
+        self.generated_content=self.generated_content.replace('%%LANG%%', lang)
+        with open(latex_filename, 'w') as gen_file:
             gen_file.write(self.generated_content)
 
     def generate_item(self, item, template_item: str):
@@ -80,7 +85,10 @@ class abstract_generator:
         return "\n\n\\end{textbox}\n\n"
 
     def add_section(self, section_name:str) -> str:
-        return "\n\\begin{textbox}{" + section_name + "}\n"
+        return "\n\\section{" + section_name + "}\n"
+
+    def add_subsection(self, section_name:str) -> str:
+        return "\n\\subsection{" + section_name + "}\n"
 
 class abstract_md_to_tex_generator(abstract_generator):
 
@@ -93,10 +101,13 @@ class abstract_md_to_tex_generator(abstract_generator):
 
         data={}
         data['items']=[]
+        lang=''
         for i in range(len(md_content)):
             l=md_content[i]
-            if l.startswith('main_title: '):
+            if l.lower().startswith('main_title: '):
                 main_title=l[len('main_title: '):]
+            if l.lower().startswith('lang:'):
+                lang=l[len('lang:'):].strip()
             if l.startswith('#---------') and i < len(md_content)-1:
                 print('parsing an item')
                 i+=1
@@ -115,6 +126,16 @@ class abstract_md_to_tex_generator(abstract_generator):
                     elif l.lower().startswith('#- section:'):
                         section_name=l[len('#- section:'):].strip().rstrip()
                         item={'section': section_name}
+                        data['items'].append(item)
+                        break
+                    elif l.lower().startswith('#- subsection:'):
+                        subsection_name=l[len('#- subsection:'):].strip().rstrip()
+                        item={'subsection': subsection_name}
+                        data['items'].append(item)
+                        break
+                    elif l.lower().startswith('#- begin-section:'):
+                        section_name=l[len('#- begin-section:'):].strip().rstrip()
+                        item={'begin-section': section_name}
                         data['items'].append(item)
                         break
                     elif l.lower().startswith('#- end-section'):
@@ -139,4 +160,4 @@ class abstract_md_to_tex_generator(abstract_generator):
         items=data['items']
         print(f"{len(items)} items")
         latex_filename=self.get_outputfilename(filename=filename, tex_template=tex_template, extension='.md')
-        self.do_generate(data['items'], main_title, latex_filename)
+        self.do_generate(data['items'], lang=lang, main_title=main_title, latex_filename=latex_filename)

@@ -1,7 +1,7 @@
 main_title: Yaml Cheatsheet
-
+lang: yaml
 #-------------------------------------------------------------------------------
-title: multiline string 
+title: Multiline string 
 Multilines value transformed to one line with eol added at the end
 key: >
 Multilines value transformed to one line without eol added at the end
