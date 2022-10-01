@@ -1,0 +1,329 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{GIT Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\section{Working With Repositories}
+
+\subsection{Basic commands}
+
+\cppitem{Local repository status}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git status
+
+\end{minted}
+
+\cppitem{Stage a file/dir to commit list}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git add <file or dir>
+
+\end{minted}
+
+\cppitem{Commit (with text editor)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git commit
+
+\end{minted}
+
+\cppitem{Commit (with commit message)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git commit -m "message"
+
+\end{minted}
+
+\cppitem{Send committed modification to remote repository (master branch)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git push origin master
+
+\end{minted}
+
+\cppitem{Verbose mode}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git command --verbose
+# or 
+git command -v
+
+\end{minted}
+
+\cppitem{Dry run}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git command --dry-run
+
+\end{minted}
+
+\cppitem{Unstage a file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git rm --cached <file>
+
+\end{minted}
+
+\section{REPOSITORY STATUS}
+
+\cppitem{Unpublished commits}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git log origin/master..HEAD
+
+\end{minted}
+
+\cppitem{Display diff of unpublished commits}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git diff origin/master
+
+\end{minted}
+
+\cppitem{Display diff of unpublished commits}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git diff origin/master..HEAD
+
+\end{minted}
+
+\cppitem{Remote repository information}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git remote show origin
+
+\end{minted}
+
+\subsection{Branch}
+
+\cppitem{Create a branch}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git branch <branch name>
+
+\end{minted}
+
+\cppitem{Switch to a branch}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git checkout <branch name>
+
+\end{minted}
+
+\cppitem{}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Create and switch to a branch
+git checkout <branch name>
+
+\end{minted}
+
+\cppitem{}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Delete a branch
+git branch -d <branch name>
+
+\end{minted}
+
+\cppitem{Get the current branch (starred)(method 1/2)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git branch
+
+\end{minted}
+
+\cppitem{Get the current branch (method 2/2)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git rev-parse --abbrev-ref HEAD
+
+\end{minted}
+
+\subsection{Branching}
+
+\cppitem{Create a branch}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git checkout -b [name_of_your_new_branch]
+
+\end{minted}
+
+\cppitem{Change working branch}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git checkout [name_of_your_new_branch]
+
+\end{minted}
+
+\cppitem{Push the branch}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git push origin [name_of_your_new_branch]
+
+\end{minted}
+
+\cppitem{See all branches}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git branch
+
+\end{minted}
+
+\cppitem{Delete a branch on your local filesystem}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git branch -d [name_of_your_new_branch]
+
+\end{minted}
+
+\cppitem{Force the deletion of local branch on your filesystem}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git branch -D [name_of_your_new_branch]
+
+\end{minted}
+
+\cppitem{Delete the branch on github}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git push origin :[name_of_your_new_branch]
+
+\end{minted}
+
+\section{Working With Files}
+
+\cppitem{Modify a commit message}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git commit --amend
+
+\end{minted}
+
+\cppitem{}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Undo commit
+git commit -m "message"
+git reset HEAD~
+#<< edit files as necessary >>
+git add <...>
+git commit -c ORIG_HEAD
+
+\end{minted}
+
+\cppitem{Revert one or more (n) commit and keep modifs}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git reset --soft HEAD~n
+
+\end{minted}
+
+\cppitem{Revert one or more (n) commit and undo modifs}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git reset --hard HEAD~n
+
+\end{minted}
+
+\cppitem{Revert one or more commits (by hashes)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git revert a867b4af 25eee4ca 0766c053
+
+\end{minted}
+
+\cppitem{Revert the last two commits}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git revert HEAD~2..HEAD
+
+\end{minted}
+
+\cppitem{Revert range of commits (by hashes interval)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git revert a867b4af..0766c053
+
+\end{minted}
+
+\cppitem{Unstage a file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git restore --staged <added file
+
+\end{minted}
+
+\subsection{Logs}
+
+\cppitem{Show commit logs}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git log [ -n <number>]
+
+\end{minted}
+
+\cppitem{Show commit diff}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git diff <commit hash>~   <commit hash>
+# or 
+ git show <commit hash>
+
+\end{minted}
+
+\section{Useful Tips}
+
+\subsection{Mirroring}
+
+\cppitem{Push to multiple Git repositories}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git remote add github \
+      git@github.com:aamar/my-project.git 
+git remote add bb \ 
+      git@bitbucket.org:aamar/my-project.git 
+git remote set-url ---add ---push origin \
+      git@github.com:aamar/my-project.git
+git remote set-url ---add ---push origin \
+      git@bitbucket.org:aamar/my-project.git
+
+\end{minted}
+
+\section{Github}
+
+\cppitem{Change repo URL from https to ssh (replace user by the real username)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git remote set-url origin git+ssh://git@github.com/user/reponame.git
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}

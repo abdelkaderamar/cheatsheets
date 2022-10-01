@@ -1,0 +1,65 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Python Libraries Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\begin{codebox}{python}{argparse}
+    # Argument expecting one argument
+    parser.add_argument('--indice', '-i', default='CAC 40', action='store', dest='indices', help='Process indices')
+    # python argparse_sample.py -i CAC\ 40
+    # Namespace(auto_create=False, equities=None, indices='CAC 40')
+    # Arguments can be repeated
+    parser.add_argument('--equity', '-e', action='append', dest='equities', help='Process equities')
+    # python argparse_sample.py -i CAC\ 40 -e 'GLE.PA' -e 'SGOB.PA'
+    # Namespace(auto_create=False, equities=['GLE.PA', 'SGOB.PA'], indices='CAC 40')
+    # Argument without a value (boolean value)
+    parser.add_argument('--auto-create', default=False, action='store_true', dest='auto_create', help='Automatically create equity')
+    # python argparse_sample.py -i CAC\ 40 -e 'GLE.PA' -e 'SGOB.PA' --auto-create
+    # Namespace(auto_create=True, equities=['GLE.PA', 'SGOB.PA'], indices='CAC 40')
+    # Argument without a typed value
+    parser.add_argument('--interval', default=30, action='store', dest='interval', help='Interval time')
+    # python argparse_sample.py
+    # Namespace(auto_create=False, equities=None, indices='CAC 40', interval=30)
+    # python argparse_sample.py --interval=22
+    # Namespace(auto_create=False, equities=None, indices='CAC 40', interval='22')
+    # python argparse_sample.py --interval 32
+    # Namespace(auto_create=False, equities=None, indices='CAC 40', interval='32')
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}
