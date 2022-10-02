@@ -1,0 +1,182 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{CMAKE Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\section{THE BASICS}
+
+\cppitem{cmake version requirement}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+cmake_minimum_required( VERSION 2.8.7 )
+
+\end{minted}
+
+\cppitem{Add a subdirectory to cmake}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+add_Subdirectory(src)
+
+\end{minted}
+
+\section{EXECUTABLES AND LIBRARIES}
+
+\cppitem{Add library target}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Add_Library ( data ${DATA_SOURCES} )
+
+\end{minted}
+
+\cppitem{Add dependency libraries (for libray or an executable)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Target_Link_Libraries (test_generator
+	util data fix fixml)
+
+\end{minted}
+
+\cppitem{Add executable target}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+add_executable(${CPP_EXE} ${CPP_FILE})
+
+\end{minted}
+
+\cppitem{Add an executable target for each cpp file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+foreach ( CPP ${SAMPLES_SRCS} ) 
+   get_filename_component(EXE ${CPP} NAME_WE ) 
+   add_executable ( ${EXE} ${FILE} )
+endforeach( CPP_FILE )
+
+\end{minted}
+
+\cppitem{}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+#- section FILES
+
+\end{minted}
+
+\cppitem{Get files by their names using wildcard (here all cpp files)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+File ( GLOB <VAR_NAME> *.cpp )
+
+\end{minted}
+
+\cppitem{Get filename without extension}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+get_filename_component(FNAME ${CPP} NAME_WE)
+
+\end{minted}
+
+\cppitem{Get name without directory}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+get_filename_component(FNAME ${CPP} NAME)
+
+\end{minted}
+
+\cppitem{Get file extension (longest)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+get_filename_component(FEXT ${CPP} EXT)
+
+\end{minted}
+
+\cppitem{Get file absolute path}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+get\_filename\_component(FPATH \$\{CPP\} ABSOLUTE)
+
+\end{minted}
+
+\cppitem{Get file absolute path with symlinks resolved}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+get\_filename\_component(FPATH \$\{CPP\} REALPATH)
+
+\end{minted}
+
+\cppitem{Get file directory}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+get_filename_component(FDIR ${CPP} DIRECTORY)
+
+\end{minted}
+
+\section{C++}
+
+\cppitem{Define C++ standard requirement of the compiler (here c++14)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+set(CMAKE_CXX_STANDARD 14)
+        set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+\end{minted}
+
+\cppitem{Add compilation flag}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+add_definitions ( "-std=c++11" )
+
+\end{minted}
+
+\cppitem{Add include directory}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Include_Directories(${Xerces_INCLUDE_DIRS})
+
+\end{minted}
+
+\cppitem{Add link directories}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+link_directories(<dir1> <dir2> ...)
+
+\end{minted}
+
+\cppitem{Add warnings flags}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
+endif()
+
+\end{minted}
+
+\section{Tests}
+
+\section{Packaging and Installation}
+
+
+\end{multicols}
+
+\end{document}

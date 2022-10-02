@@ -1,0 +1,153 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}CMAKE Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\section{THE BASICS}
+
+\begin{codebox}{cmake}{cmake version requirement}
+cmake_minimum_required( VERSION 2.8.7 )
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add a subdirectory to cmake}
+add_Subdirectory(src)
+
+\end{codebox}
+
+\section{EXECUTABLES AND LIBRARIES}
+
+\begin{codebox}{cmake}{Add library target}
+Add_Library ( data ${DATA_SOURCES} )
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add dependency libraries (for libray or an executable)}
+Target_Link_Libraries (test_generator
+	util data fix fixml)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add executable target}
+add_executable(${CPP_EXE} ${CPP_FILE})
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add an executable target for each cpp file}
+foreach ( CPP ${SAMPLES_SRCS} ) 
+   get_filename_component(EXE ${CPP} NAME_WE ) 
+   add_executable ( ${EXE} ${FILE} )
+endforeach( CPP_FILE )
+
+\end{codebox}
+
+\begin{codebox}{cmake}{}
+#- section FILES
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Get files by their names using wildcard (here all cpp files)}
+File ( GLOB <VAR_NAME> *.cpp )
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Get filename without extension}
+get_filename_component(FNAME ${CPP} NAME_WE)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Get name without directory}
+get_filename_component(FNAME ${CPP} NAME)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Get file extension (longest)}
+get_filename_component(FEXT ${CPP} EXT)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Get file absolute path}
+get\_filename\_component(FPATH \$\{CPP\} ABSOLUTE)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Get file absolute path with symlinks resolved}
+get\_filename\_component(FPATH \$\{CPP\} REALPATH)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Get file directory}
+get_filename_component(FDIR ${CPP} DIRECTORY)
+
+\end{codebox}
+
+\section{C++}
+
+\begin{codebox}{cmake}{Define C++ standard requirement of the compiler (here c++14)}
+set(CMAKE_CXX_STANDARD 14)
+        set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add compilation flag}
+add_definitions ( "-std=c++11" )
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add include directory}
+Include_Directories(${Xerces_INCLUDE_DIRS})
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add link directories}
+link_directories(<dir1> <dir2> ...)
+
+\end{codebox}
+
+\begin{codebox}{cmake}{Add warnings flags}
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
+endif()
+
+\end{codebox}
+
+\section{Tests}
+
+\section{Packaging and Installation}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}

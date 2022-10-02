@@ -1,0 +1,7 @@
+sed -i 's/%-----/#-----/' tools/cmake_cheatsheet.md 
+sed -i '/\\begin{minted}/d' tools/cmake_cheatsheet.md
+sed -i '/\\end{minted}/d' tools/cmake_cheatsheet.md
+sed -i '/  \[frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\\footnotesize\]{cmake}/d' tools/cmake_cheatsheet.md
+sed -i 's/\\toolsitem{\(.*\)}/title: \1/' tools/cmake_cheatsheet.md
+
+

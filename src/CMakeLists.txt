@@ -45,6 +45,19 @@ Foreach (PYTHON_FILE ${PYTHON_FILES})
     Add_Latex_Document(${PYTHON_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(PYTHON_FILE)
 
+# TOOLS
+Set(TOOLS_FILES
+     "tools/tex/git-cheatsheet.tex"
+     "tools/tex/git-colourful.tex"
+     "tools/tex/git-colourful-updated.tex"
+     "tools/tex/cmake-cheatsheet.tex"
+     "tools/tex/cmake-colourful.tex"
+     "tools/tex/cmake-colourful-updated.tex"
+     )
+Foreach (TOOLS_FILE ${TOOLS_FILES})
+    Add_Latex_Document(${TOOLS_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(TOOLS_FILE)
+
 # MISC
 Set(MISC_FILES 
     "misc/tex/yaml_cs-colourful.tex" 
