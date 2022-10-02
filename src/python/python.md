@@ -40,4 +40,10 @@ included=set(stocks_dict2.items()).issubset(set(stocks_dict1.items()))
 diff={key: value for (key, value) in stocks_dict1.items() 
     if (key, value) not in stocks_dict2.items()}
 #------------------------------------------------------------------------------
+title: Find the matched object(s) in a list
+# if the list contains a single match
+match = next((s for s in stocks if s.ticker == equity.reuters_ticker), None)
+# if the list contains one or more matches
+matches = [s for s in stocks if s.ticker == equity.reuters_ticker]
 #------------------------------------------------------------------------------
+
