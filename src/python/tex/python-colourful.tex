@@ -35,9 +35,9 @@
 \begin{codebox}{python}{Sort a list of objects}
 class stock:
     def __init__(self, name, ticker, isin):
-        self.name = name
-        self.ticker = ticker
-        self.isin = isin
+self.name = name
+self.ticker = ticker
+self.isin = isin
 sorted_stocks=sorted(stocks, key=lambda s: s.ticker, reverse=True)
 stocks.sort(key=lambda s : s.ticker, reverse=True)
 
@@ -52,11 +52,11 @@ sorted_stocks_dict = {key: val for key, val
 \begin{codebox}{python}{Sort a dictionary by value (define \_\_lt\_\_ or \_\_gt\_\_)}
 class stock:
     def __init__(self, name, ticker, isin):
-        self.name = name
-        self.ticker = ticker
-        self.isin = isin
+self.name = name
+self.ticker = ticker
+self.isin = isin
     def __lt__(self, other):
-        return self.name < other.name
+return self.name < other.name
 sorted_stocks_dict = {key: val for key, val     
     in sorted(stocks_dict.items(), key=lambda kvp : kvp[1])}
 
@@ -73,6 +73,64 @@ watchlist=[ticker for ticker in watchlist if ticker not in banks]
 included=set(stocks_dict2.items()).issubset(set(stocks_dict1.items()))
 diff={key: value for (key, value) in stocks_dict1.items() 
     if (key, value) not in stocks_dict2.items()}
+
+\end{codebox}
+
+\begin{codebox}{python}{Find the matched object(s) in a list}
+# if the list contains a single match
+match = next((s for s in stocks if s.ticker == equity.reuters_ticker), None)
+# if the list contains one or more matches
+matches = [s for s in stocks if s.ticker == equity.reuters_ticker]
+
+\end{codebox}
+
+\begin{codebox}{python}{File basename}
+import os
+s.path.basename(temp_tex_file.name)
+
+\end{codebox}
+
+\begin{codebox}{python}{Capitalize the first letter of each word (for only the first letter of the string use capitalize())}
+s.title()
+
+\end{codebox}
+
+\begin{codebox}{python}{Date in french}
+start_date.strftime("%B %Y").title() 
+start_date.strftime('%d %B %Y').title()
+
+\end{codebox}
+
+\begin{codebox}{python}{Iterate through 2 lists}
+for a,b in zip(l1, l2):
+        print(a, b)
+
+\end{codebox}
+
+\begin{codebox}{python}{Convert a list (of non string objects) to a string}
+', '.join(str(v) for v in start_date_range)
+', '.join(map(str, list_of_ints))
+
+\end{codebox}
+
+\begin{codebox}{python}{Range of date (frequency one month\, using pandas library)}
+pandas.period_range(start_date, end_date, freq='M')
+
+\end{codebox}
+
+\begin{codebox}{python}{Run an external program (and set the working directory)}
+subprocess.run(["pdflatex", '-interaction=nonstopmode', temp_tex_file.name],
+                       cwd='media/generated')
+
+\end{codebox}
+
+\begin{codebox}{python}{Create a temporary file}
+temp_tex_file = tempfile.NamedTemporaryFile(mode="w", suffix=".tex", delete=False)
+
+\end{codebox}
+
+\begin{codebox}{python}{Convert a number to word (using num2words library)}
+amount_words = num2words(amount, lang='fr')
 
 \end{codebox}
 
