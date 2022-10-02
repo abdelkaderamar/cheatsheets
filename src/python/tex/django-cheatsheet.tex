@@ -1,0 +1,53 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Django Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Get media url prefix}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+<a href="{% get_media_prefix %}{{ pdf_file }}">Download</a>
+
+\end{minted}
+
+\cppitem{Configuring media directory}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# in settings.py
+MEDIA_ROOT = 'media/generated'
+MEDIA_URL = 'media/'
+# in site/urls.py
+from django.conf.urls.static import static
+urlpatterns = [
+    # ...
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}

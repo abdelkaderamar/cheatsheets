@@ -1,0 +1,58 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Django Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\begin{codebox}{python}{Get media url prefix}
+<a href="{% get_media_prefix %}{{ pdf_file }}">Download</a>
+
+\end{codebox}
+
+\begin{codebox}{python}{Configuring media directory}
+# in settings.py
+MEDIA_ROOT = 'media/generated'
+MEDIA_URL = 'media/'
+# in site/urls.py
+from django.conf.urls.static import static
+urlpatterns = [
+    # ...
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}
