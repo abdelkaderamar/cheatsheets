@@ -159,42 +159,78 @@ cout << endl;
 
 %-------------------------------------------------------------------------------
 
-\cppitem{-------}
+\cppitem{Concatenating two vectors/list/deque}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-
+c1.insert( c1.end(), c2.begin(), c2.end() );
 \end{minted}
 
 %-------------------------------------------------------------------------------
-\cppitem{-------}
+\cppitem{Concatenating two sets/map}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-
+// valid also for unordered_set/unordered_map
+c1.insert(c2.begin(), c2.end());
 \end{minted}
 
 %-------------------------------------------------------------------------------
-\cppitem{-------}
+\cppitem{Concatenate two forward\_list}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-
+fl1.merge(fl2);
 \end{minted}
 
-\cppitem{-------}
+\cppitem{Loop through map}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-
+// With C++11
+for (auto const& p : m)
+{
+  cout << p.first << "," << p.second << endl;
+}
+// With C++17
+for (auto const& [k, v] : m) {
+  cout << k << "," << v << endl;
+}
 \end{minted}
 
 %-------------------------------------------------------------------------------
 
-\cppitem{-------}
+\cppitem{Sum of container elements}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+// for vector/list/forward_list/deque/set (be 
+// careful about initial value type)
+std::accumulate(c1.begin(), c1.end(), 0);
 
+// to sum custom types
+struct point_t {
+    int x, y;
+    point_t operator+(const point_t& t) {
+        return point_t{x+t.x, y+t.y};
+    }
+};
+vector<point_t> v1{{1,2}, {2,3}, {3,4}};
+point_t sum = accumulate(v1.begin(), v1.end(), 
+                        point_t{});
 \end{minted}
 
 %-------------------------------------------------------------------------------
-\cppitem{-------}
+
+\end{multicols}
+
+\vspace*{0.15cm}
+
+\begin{center}
+  \cheatsheettitle{C++ STL Containers Cheatsheet}
+\end{center}
+
+
+\begin{multicols}{3}
+  %\raggedcolumns
+  %\noindent 
+  
+\cppitem{test}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 

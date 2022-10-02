@@ -113,5 +113,33 @@ all)						fdupes -d .
 fdupes: Exclude folder from exclusion 
 (--delete --noprompt to delete automatically)	fdupes -r --omitfirst -o name //myfavourite/directory/path /dir2 /dir3 
 
+Split each pdf page in two pages		pdfarranger
+
+
+Insert a line at a specific line		sed '3 i New Line with sed' File1
+
+Function/Method name				${FUNCNAME[0]}
+
+Remove execution permission from files          chmod -R -x+X <dir>
+
+Fullpath of a file				realpath FILE
+
+Split flac file based on .cue file		shnsplit -f file.cue -t %n-%t -o flac file.flac
+
+Convert APE to FLAC				ffmpeg -i cd.ape cd.flac
+
+Restart Gnome Shell				Alt+F2 then type r
+
+Remove invalid UTF-8 characters in filenames    convmv -r -f ISO-8859-1 -t UTF-8  <dir>
+						convmv -r -f cp437 -t UTF-8 <dir>	
+
+Extract images from a videos			ffmpeg -i inputfile.avi -r 1 image-%3d.jpeg
+						  -r 1 	extract one image per second
+
+Crop images (not command line but UI)		gthumb
+
+Run ffmpeg in the background			ffmpeg ... > output.log 2>&1 < /dev/null &
+
+extract a segment from an mp3			ffmpeg -ss 00:01:20 -t 00:01:20 -acodec copy -i /path/to/input.mp3 /path/to/output.mp3
 
 
