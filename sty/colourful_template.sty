@@ -55,9 +55,9 @@ right=1mm,boxsep=1mm,middle=1pt}
 
 %-------------------------------
 \newtcblisting{codebox}[2]{colback=codecolor!5,colframe=codecolor!80!black,listing only, 
-minted options={numbers=left,style=tcblatex,fontsize=\tiny,breaklines,autogobble,linenos,numbersep=3mm},
+minted options={numbers=left,style=tcblatex,fontsize=\scriptsize,breaklines,autogobble,linenos,numbersep=3mm},
 left=5mm,enhanced,
-title=#2, fonttitle=\bfseries,
+title=#2, fonttitle=\scriptsize\bfseries,
 listing engine=minted,minted language=#1}
 
 %--------------------------------------------------------------------------------
@@ -90,3 +90,11 @@ listing engine=minted,minted language=#1}
 \usepackage{csquotes}
 
 \newcommand{\loremipsum}{Lorem ipsum dolor sit amet.}
+
+\newcommand{\cheatsheettitle}[1]{
+    \vspace{0.15cm}
+      \begin{tikzpicture}
+        \node [fill=white, text=green, draw, rounded corners=4pt, minimum width=10cm, minimum height=1.5cm, inner sep=6pt]{\Huge\textbf{#1}};
+      \end{tikzpicture}
+      \vspace{0.02cm}
+    }
