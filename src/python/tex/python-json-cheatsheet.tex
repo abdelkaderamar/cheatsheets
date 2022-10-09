@@ -1,0 +1,50 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Python/JSON Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Read a json file and convert a list of json objects to list of objects}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+with open(filename, 'r') as f:
+        data = json.load(f)
+        if 'result_data' in data:
+            stocks=[Stock(**d) for d in data['result_data']]
+
+\end{minted}
+
+\cppitem{Parse a string as a json object}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+data = json.loads(script.text)
+instrument = data['custom']['instrument']
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}

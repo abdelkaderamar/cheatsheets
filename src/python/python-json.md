@@ -8,3 +8,7 @@ with open(filename, 'r') as f:
         if 'result_data' in data:
             stocks=[Stock(**d) for d in data['result_data']]
 #------------------------------------------------------------------------------
+title: Parse a string as a json object
+data = json.loads(script.text)
+instrument = data['custom']['instrument']
+#------------------------------------------------------------------------------

@@ -26,6 +26,25 @@
   \noindent    %<---- here
 
 
+\cppitem{Create a new project}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+django-admin startproject myproject
+# create a project in the current directory
+django-admin startproject myproject
+# create a project in a different directory
+django-admin startproject myproject project_dir
+
+\end{minted}
+
+\cppitem{Filter with a list}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# Filter the table Exchange based on a list of MIC codes
+exchanges = Exchange.objects.filter(mic_code__in=exchanges_mics)
+
+\end{minted}
+
 \cppitem{Get media url prefix}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}

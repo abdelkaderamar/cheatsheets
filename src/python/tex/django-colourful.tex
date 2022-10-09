@@ -32,12 +32,27 @@
 
 
 
-\begin{codebox}{python}{Get media url prefix}
+\begin{codebox}{bash}{Create a new project}
+django-admin startproject myproject
+# create a project in the current directory
+django-admin startproject myproject
+# create a project in a different directory
+django-admin startproject myproject project_dir
+
+\end{codebox}
+
+\begin{codebox}{bash}{Filter with a list}
+# Filter the table Exchange based on a list of MIC codes
+exchanges = Exchange.objects.filter(mic_code__in=exchanges_mics)
+
+\end{codebox}
+
+\begin{codebox}{bash}{Get media url prefix}
 <a href="{% get_media_prefix %}{{ pdf_file }}">Download</a>
 
 \end{codebox}
 
-\begin{codebox}{python}{Configuring media directory}
+\begin{codebox}{bash}{Configuring media directory}
 # in settings.py
 MEDIA_ROOT = 'media/generated'
 MEDIA_URL = 'media/'

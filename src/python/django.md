@@ -1,6 +1,17 @@
 main_title: Django Cheatsheet
-lang: python
+lang: bash
 
+#------------------------------------------------------------------------------
+title: Create a new project
+django-admin startproject myproject
+# create a project in the current directory
+django-admin startproject myproject
+# create a project in a different directory
+django-admin startproject myproject project_dir
+#------------------------------------------------------------------------------
+title: Filter with a list
+# Filter the table Exchange based on a list of MIC codes
+exchanges = Exchange.objects.filter(mic_code__in=exchanges_mics)
 #------------------------------------------------------------------------------
 title: Get media url prefix
 <a href="{% get_media_prefix %}{{ pdf_file }}">Download</a>

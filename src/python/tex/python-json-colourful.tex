@@ -1,0 +1,55 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Python/JSON Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\begin{codebox}{python}{Read a json file and convert a list of json objects to list of objects}
+with open(filename, 'r') as f:
+        data = json.load(f)
+        if 'result_data' in data:
+            stocks=[Stock(**d) for d in data['result_data']]
+
+\end{codebox}
+
+\begin{codebox}{python}{Parse a string as a json object}
+data = json.loads(script.text)
+instrument = data['custom']['instrument']
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}
