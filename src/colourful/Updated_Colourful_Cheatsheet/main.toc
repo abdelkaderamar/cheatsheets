@@ -1,0 +1,16 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Preliminary Information}{1}{section.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1}Cheatsheet Examples}{1}{subsection.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Tools}{1}{section.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Programming}{1}{section.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Code boxes}{1}{subsection.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Graphics}{1}{section.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Other types of boxes}{2}{section.5}%
