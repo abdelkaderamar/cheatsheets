@@ -8,64 +8,83 @@ Include (${CMAKE_MODULE_PATH}/UseLATEX.cmake)
 
 set(ENV{TEXINPUTS} ".:${CHEATSHEETS_SOURCE_DIR}/../sty::")
 
-# CPP
-Set(CPP_FILES 
-    "cpp/tex/c++17-lang_cs-colourful.tex" 
-    "cpp/tex/c++17-lang_cs-colourful-updated.tex" 
-    "cpp/tex/c++17-lang_cs-cheatsheet.tex"
-    "cpp/tex/c++17-lang_cs-yaml.tex"
-    "cpp/tex/c++14-lang_cs-cheatsheet.tex"
-    "cpp/tex/c++14-lang_cs-colourful-updated.tex"
-    "cpp/tex/c++14-lang_cs-colourful.tex"
-)
-Foreach (CPP_FILE ${CPP_FILES})
-    Add_Latex_Document(${CPP_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
-Endforeach(CPP_FILE)
+Set(MD_FILES "python/python.md")
+Foreach(MD_FILE ${MD_FILES})
+   Get_Filename_Component(TEX_FILENAME ${MD_FILE} NAME_WE)
+   Set(OUT_NAME python/tex/${TEX_FILENAME}-cheatsheet.tex)
+    Message(${OUT_NAME})
+   List(APPEND TEX_COMPILED_FILES ${OUT_NAME})
 
-# BASH
-Set(BASH_FILES
-     "bash/tex/bash_cs-cheatsheet.tex"
-     "bash/tex/bash_cs-colourful.tex"
-     "bash/tex/bash_cs-colourful-updated.tex"
-    )
-Foreach (BASH_FILE ${BASH_FILES})
-    Add_Latex_Document(${BASH_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
-Endforeach(BASH_FILE)
+   Add_Custom_Command(OUTPUT ${OUT_NAME} 
+                      COMMAND python md_to_latex.py  ${MD_FILE} 
+                      COMMENT "Compiling ${MD_FILE}")
+endforeach(MD_FILE)
 
-# PYTHON
-Set(PYTHON_FILES
-     "python/tex/python-cheatsheet.tex"
-     "python/tex/python-colourful.tex"
-     "python/tex/python-colourful-updated.tex"
-     "python/tex/python-libraries-cheatsheet.tex"
-     "python/tex/python-libraries-colourful.tex"
-     "python/tex/python-libraries-colourful-updated.tex"
-     "python/tex/django-cheatsheet.tex"
-     "python/tex/django-colourful.tex"
-     "python/tex/django-colourful-updated.tex"
-     )
-Foreach (PYTHON_FILE ${PYTHON_FILES})
-    Add_Latex_Document(${PYTHON_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
-Endforeach(PYTHON_FILE)
+set_source_files_properties(${TEX_COMPILED_FILES}
+                            PROPERTIES GENERATED TRUE)
 
-# TOOLS
-Set(TOOLS_FILES
-     "tools/tex/git-cheatsheet.tex"
-     "tools/tex/git-colourful.tex"
-     "tools/tex/git-colourful-updated.tex"
-     "tools/tex/cmake-cheatsheet.tex"
-     "tools/tex/cmake-colourful.tex"
-     "tools/tex/cmake-colourful-updated.tex"
-     )
-Foreach (TOOLS_FILE ${TOOLS_FILES})
-    Add_Latex_Document(${TOOLS_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
-Endforeach(TOOLS_FILE)
+ Foreach (BASH_FILE ${TEX_COMPILED_FILES})
+     Add_Latex_Document(${BASH_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(BASH_FILE)                            
 
-# MISC
-Set(MISC_FILES 
-    "misc/tex/yaml_cs-colourful.tex" 
-    "misc/tex/yaml_cs-colourful-updated.tex"
-)
-Foreach (MISC_FILE ${MISC_FILES})
-    Add_Latex_Document(${MISC_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
-Endforeach(MISC_FILE)
+# # CPP
+# Set(CPP_FILES 
+#     "cpp/tex/c++17-lang_cs-colourful.tex" 
+#     "cpp/tex/c++17-lang_cs-colourful-updated.tex" 
+#     "cpp/tex/c++17-lang_cs-cheatsheet.tex"
+#     "cpp/tex/c++17-lang_cs-yaml.tex"
+#     "cpp/tex/c++14-lang_cs-cheatsheet.tex"
+#     "cpp/tex/c++14-lang_cs-colourful-updated.tex"
+#     "cpp/tex/c++14-lang_cs-colourful.tex"
+# )
+# Foreach (CPP_FILE ${CPP_FILES})
+#     Add_Latex_Document(${CPP_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+# Endforeach(CPP_FILE)
+
+# # BASH
+# Set(BASH_FILES
+#      "bash/tex/bash_cs-cheatsheet.tex"
+#      "bash/tex/bash_cs-colourful.tex"
+#      "bash/tex/bash_cs-colourful-updated.tex"
+#     )
+# Foreach (BASH_FILE ${BASH_FILES})
+#     Add_Latex_Document(${BASH_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+# Endforeach(BASH_FILE)
+
+# # PYTHON
+# Set(PYTHON_FILES
+#      "python/tex/python-cheatsheet.tex"
+#      "python/tex/python-colourful.tex"
+#      "python/tex/python-colourful-updated.tex"
+#      "python/tex/python-libraries-cheatsheet.tex"
+#      "python/tex/python-libraries-colourful.tex"
+#      "python/tex/python-libraries-colourful-updated.tex"
+#      "python/tex/django-cheatsheet.tex"
+#      "python/tex/django-colourful.tex"
+#      "python/tex/django-colourful-updated.tex"
+#      )
+# Foreach (PYTHON_FILE ${PYTHON_FILES})
+#     Add_Latex_Document(${PYTHON_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+# Endforeach(PYTHON_FILE)
+
+# # TOOLS
+# Set(TOOLS_FILES
+#      "tools/tex/git-cheatsheet.tex"
+#      "tools/tex/git-colourful.tex"
+#      "tools/tex/git-colourful-updated.tex"
+#      "tools/tex/cmake-cheatsheet.tex"
+#      "tools/tex/cmake-colourful.tex"
+#      "tools/tex/cmake-colourful-updated.tex"
+#      )
+# Foreach (TOOLS_FILE ${TOOLS_FILES})
+#     Add_Latex_Document(${TOOLS_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+# Endforeach(TOOLS_FILE)
+
+# # MISC
+# Set(MISC_FILES 
+#     "misc/tex/yaml_cs-colourful.tex" 
+#     "misc/tex/yaml_cs-colourful-updated.tex"
+# )
+# Foreach (MISC_FILE ${MISC_FILES})
+#     Add_Latex_Document(${MISC_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+# Endforeach(MISC_FILE)

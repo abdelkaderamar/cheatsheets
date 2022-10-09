@@ -78,3 +78,4 @@ temp_tex_file = tempfile.NamedTemporaryFile(mode="w", suffix=".tex", delete=Fals
 title: Convert a number to word (using num2words library)
 amount_words = num2words(amount, lang='fr')
 #------------------------------------------------------------------------------
+
