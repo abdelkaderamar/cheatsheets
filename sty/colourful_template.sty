@@ -55,7 +55,8 @@ right=1mm,boxsep=1mm,middle=1pt}
 
 %-------------------------------
 \newtcblisting{codebox}[2]{colback=codecolor!5,colframe=codecolor!80!black,listing only, 
-minted options={numbers=left,style=tcblatex,fontsize=\scriptsize,breaklines,autogobble,linenos,numbersep=3mm},
+%minted options={numbers=left,style=tcblatex,fontsize=\scriptsize,breaklines,autogobble,linenos,numbersep=3mm},
+minted options={numbers=left,fontsize=\scriptsize,breaklines,autogobble,linenos,numbersep=3mm},
 left=5mm,enhanced,
 title=#2, fonttitle=\scriptsize\bfseries,
 listing engine=minted,minted language=#1}
