@@ -1,0 +1,82 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Python Beautifulsoup cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Find an element by its name}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+tbody = soup.find('tbody')
+trs = soup.find('tbody').find_all('tr')
+
+\end{minted}
+
+\cppitem{Find an element with a specific attribute value}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+table = soup.find('table', {'id' : 'stocks-data-table-es'} )
+
+\end{minted}
+
+\cppitem{Find an element with a specific class}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+tbody = soup.find('table', class_='full-width ftse-index-table-table')
+
+\end{minted}
+
+\cppitem{Find element with attribute value and text value}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+soup.find('a', {"href" : url}, text=name)
+
+\end{minted}
+
+\cppitem{Extract the text value}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+indice_name = soup.find('div', {'class': 'modal-title'}).find('h2').text
+
+\end{minted}
+
+\cppitem{Find the last element}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+a=list(soup.find_all('a', class_='page-number'))[-1]
+
+\end{minted}
+
+\cppitem{Find the parent element}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+tr=soup.find('a', {"href" : url}, text=name).parent.parent
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}

@@ -61,13 +61,17 @@ git checkout <branch name>
 Delete a branch
 git branch -d <branch name>
 #-------------------------------------------------------------------------
-title: Get the current branch (starred)(method 1/2)
+title: List the local and current (starred) branches 
 git branch
 #-------------------------------------------------------------------------
-title: Get the current branch (method 2/2)
+title: Get the current branch
 git rev-parse --abbrev-ref HEAD
 #-------------------------------------------------------------------------
-#- subsection: Branching
+title: List remote branches
+git branches -r
+#-------------------------------------------------------------------------
+title: List local and remotes branches
+git branches -a
 #-------------------------------------------------------------------------
 title: Create a branch
 git checkout -b [name_of_your_new_branch]

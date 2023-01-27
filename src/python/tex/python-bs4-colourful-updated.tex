@@ -1,0 +1,86 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Python Beautifulsoup cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_updated_template}
+
+% \input{colourful-updated-template-commands.tex}
+
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+%\maketitle
+\scriptsize
+%\tableofcontents
+
+%-----------------------------------------------------
+% \section{Preliminary Information}
+%-----------------------------------------------------
+%-----------------------------------------------------
+% \subsection{Cheatsheet Examples}
+% \input{contents/cheatsheet-examples}
+
+
+
+
+\begin{codebox}{python}{Find an element by its name}
+tbody = soup.find('tbody')
+trs = soup.find('tbody').find_all('tr')
+
+\end{codebox}
+
+\begin{codebox}{python}{Find an element with a specific attribute value}
+table = soup.find('table', {'id' : 'stocks-data-table-es'} )
+
+\end{codebox}
+
+\begin{codebox}{python}{Find an element with a specific class}
+tbody = soup.find('table', class_='full-width ftse-index-table-table')
+
+\end{codebox}
+
+\begin{codebox}{python}{Find element with attribute value and text value}
+soup.find('a', {"href" : url}, text=name)
+
+\end{codebox}
+
+\begin{codebox}{python}{Extract the text value}
+indice_name = soup.find('div', {'class': 'modal-title'}).find('h2').text
+
+\end{codebox}
+
+\begin{codebox}{python}{Find the last element}
+a=list(soup.find_all('a', class_='page-number'))[-1]
+
+\end{codebox}
+
+\begin{codebox}{python}{Find the parent element}
+tr=soup.find('a', {"href" : url}, text=name).parent.parent
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}

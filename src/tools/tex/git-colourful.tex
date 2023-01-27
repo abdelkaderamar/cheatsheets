@@ -124,17 +124,25 @@ git branch -d <branch name>
 
 \end{codebox}
 
-\begin{codebox}{shell}{Get the current branch (starred)(method 1/2)}
+\begin{codebox}{shell}{List the local and current (starred) branches}
 git branch
 
 \end{codebox}
 
-\begin{codebox}{shell}{Get the current branch (method 2/2)}
+\begin{codebox}{shell}{Get the current branch}
 git rev-parse --abbrev-ref HEAD
 
 \end{codebox}
 
-\subsection{Branching}
+\begin{codebox}{shell}{List remote branches}
+git branches -r
+
+\end{codebox}
+
+\begin{codebox}{shell}{List local and remotes branches}
+git branches -a
+
+\end{codebox}
 
 \begin{codebox}{shell}{Create a branch}
 git checkout -b [name_of_your_new_branch]

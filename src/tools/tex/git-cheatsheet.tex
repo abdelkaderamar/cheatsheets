@@ -150,21 +150,33 @@ git branch -d <branch name>
 
 \end{minted}
 
-\cppitem{Get the current branch (starred)(method 1/2)}
+\cppitem{List the local and current (starred) branches}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 git branch
 
 \end{minted}
 
-\cppitem{Get the current branch (method 2/2)}
+\cppitem{Get the current branch}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 git rev-parse --abbrev-ref HEAD
 
 \end{minted}
 
-\subsection{Branching}
+\cppitem{List remote branches}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git branches -r
+
+\end{minted}
+
+\cppitem{List local and remotes branches}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+git branches -a
+
+\end{minted}
 
 \cppitem{Create a branch}
 \begin{minted}

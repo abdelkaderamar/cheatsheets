@@ -32,6 +32,16 @@ Foreach (BASH_FILE ${BASH_FILES})
     Add_Latex_Document(${BASH_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(BASH_FILE)
 
+# BOOK
+Set(BOOK_FILES
+     "book/tex/pragmatic_programmer_cs-cheatsheet.tex"
+     "book/tex/pragmatic_programmer_cs-colourful.tex"
+     "book/tex/pragmatic_programmer_cs-colourful-updated.tex"
+    )
+Foreach (BOOK_FILE ${BOOK_FILES})
+    Add_Latex_Document(${BOOK_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(BOOK_FILE)
+
 # PYTHON
 Set(PYTHON_FILES
      "python/tex/python-cheatsheet.tex"
