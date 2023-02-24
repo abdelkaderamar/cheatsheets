@@ -28,3 +28,14 @@ title: argparse
     # Namespace(auto_create=False, equities=None, indices='CAC 40', interval='32')
 
 #---------------------------------------------------------------------------------------------------
+title: pyyaml
+    import yaml
+    # load multi-documents file
+    with open('multi-doc.yaml', 'r') as f:
+    docs = yaml.load_all(f, Loader=yaml.FullLoader)
+    for doc in docs:
+      pass
+    # load document file
+    with open('doc.yaml', 'r') as f:
+    doc = yaml.load(f, Loader=yaml.FullLoader)
+

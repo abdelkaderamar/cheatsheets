@@ -58,6 +58,18 @@ sed 's/pattern/d' file.txt
 
 \end{codebox}
 
+\section{Arrays}
+
+\begin{codebox}{bash}{Array split}
+arr=("a" "b" "c" "d")
+team_one=("${arr[@]:0:2}")
+echo "${arr[@]}"
+# a b c d
+echo "${team_one[@]}"
+# a b
+
+\end{codebox}
+
 
 %---------------------------------------------
 \AtNextBibliography{\footnotesize}
