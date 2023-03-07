@@ -52,6 +52,16 @@ Foreach (CSS_FILE ${CSS_FILES})
     Add_Latex_Document(${CSS_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(CSS_FILE)
 
+# LINUX
+Set(LINUX_FILES
+     "linux/tex/linux_misc-cheatsheet.tex"
+     "linux/tex/linux_misc-colourful.tex"
+     "linux/tex/linux_misc-colourful-updated.tex"
+     )
+Foreach (LINUX_FILE ${LINUX_FILES})
+    Add_Latex_Document(${LINUX_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(LINUX_FILE)
+
 # PYTHON
 Set(PYTHON_FILES
      "python/tex/python-cheatsheet.tex"
