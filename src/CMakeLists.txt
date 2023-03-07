@@ -42,6 +42,16 @@ Foreach (BOOK_FILE ${BOOK_FILES})
     Add_Latex_Document(${BOOK_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(BOOK_FILE)
 
+# CSS
+Set(CSS_FILES
+     "css/tex/css_selector-cheatsheet.tex"
+     "css/tex/css_selector-colourful.tex"
+     "css/tex/css_selector-colourful-updated.tex"
+    )
+Foreach (CSS_FILE ${CSS_FILES})
+    Add_Latex_Document(${CSS_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(CSS_FILE)
+
 # PYTHON
 Set(PYTHON_FILES
      "python/tex/python-cheatsheet.tex"
@@ -53,6 +63,9 @@ Set(PYTHON_FILES
      "python/tex/django-cheatsheet.tex"
      "python/tex/django-colourful.tex"
      "python/tex/django-colourful-updated.tex"
+     "python/tex/python-pip-cheatsheet.tex"
+     "python/tex/python-pip-colourful.tex"
+     "python/tex/python-pip-colourful-updated.tex"
      )
 Foreach (PYTHON_FILE ${PYTHON_FILES})
     Add_Latex_Document(${PYTHON_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
