@@ -9,7 +9,7 @@
 
 %-------------------------
 
-\title{\color{w3schools}Python Pip cheatsheet
+\title{\color{w3schools}Python PIP cheatsheet
 }
 %\author{Abdelkader Amar}
 %\date{\today}
@@ -34,6 +34,14 @@
 
 \begin{codebox}{bash}{Upgrade a package}
 sudo pip install [package_name] --upgrade
+Example: pip install --upgrade PyPDF2
+
+\end{codebox}
+
+\begin{codebox}{bash}{Upgrade all packages (using pip-review)}
+pip install pip-review
+pip-review --interactive # interactive upgrade
+pip-review  --auto       # automatic upgrade
 
 \end{codebox}
 

@@ -15,7 +15,7 @@
 \raggedright\
 
 \begin{center}
-  \cheatsheettitle{Python Pip cheatsheet
+  \cheatsheettitle{Python PIP cheatsheet
 }
 \end{center}
 %\vspace{0.5cm}
@@ -30,6 +30,16 @@
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 sudo pip install [package_name] --upgrade
+Example: pip install --upgrade PyPDF2
+
+\end{minted}
+
+\cppitem{Upgrade all packages (using pip-review)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+pip install pip-review
+pip-review --interactive # interactive upgrade
+pip-review  --auto       # automatic upgrade
 
 \end{minted}
 
