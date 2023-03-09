@@ -12,3 +12,7 @@ title: Parse a string as a json object
 data = json.loads(script.text)
 instrument = data['custom']['instrument']
 #------------------------------------------------------------------------------
+title: Print a json object
+o =   { "name": "AZZ Incorporated", "ticker": "AZZ", "capitalisation": "1037603000" }
+print(json.dumps(o, indent=2))
+#------------------------------------------------------------------------------
