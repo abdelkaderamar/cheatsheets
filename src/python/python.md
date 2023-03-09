@@ -68,7 +68,11 @@ title: Convert a list (of non string objects) to a string
 title: Range of date (frequency one month\, using pandas library)
 pandas.period_range(start_date, end_date, freq='M')
 #------------------------------------------------------------------------------
-title: Run an external program (and set the working directory)
+title: Add a delta to datetime
+from datetime import datetime, timedelta
+d = datetime.now() + timedelta(days=7)
+#------------------------------------------------------------------------------
+title: Range of date (frequency one month\, using pandas library)
 subprocess.run(["pdflatex", '-interaction=nonstopmode', temp_tex_file.name],
                        cwd='media/generated')
 #------------------------------------------------------------------------------
