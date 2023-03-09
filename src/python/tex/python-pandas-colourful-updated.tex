@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Python/Pandas Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_updated_template}
+
+% \input{colourful-updated-template-commands.tex}
+
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+%\maketitle
+\scriptsize
+%\tableofcontents
+
+%-----------------------------------------------------
+% \section{Preliminary Information}
+%-----------------------------------------------------
+%-----------------------------------------------------
+% \subsection{Cheatsheet Examples}
+% \input{contents/cheatsheet-examples}
+
+
+
+
+\begin{codebox}{python}{Read a json file}
+with open('capitalisation.json', 'r', encoding='utf-8') as f:
+     df = pd.read_json(f)
+
+\end{codebox}
+
+\begin{codebox}{python}{Convert json dataframe to csv}
+df.to_csv('capitalisation.csv', encoding='utf-8')
+
+\end{codebox}
+
+\begin{codebox}{python}{Convert json dataframe to csv}
+# The json objects are stored with the key 'info'
+df['info'].apply(pd.Series).to_csv('info.csv')
+
+\end{codebox}
+
+\begin{codebox}{python}{Clean a field}
+# Here we remove the simple quote from the column 
+df['symbol'] = df['symbol'].str.replace("'", "")
+
+\end{codebox}
+
+\begin{codebox}{python}{Convert a field to datetime}
+df['reportDate'] = pd.to_datetime(df['reportDate'])
+
+\end{codebox}
+
+\begin{codebox}{python}{Clean all columns}
+# Remove single quote and strip the string
+df.columns = [c.replace("'", "").strip() for c in df.columns.values.tolist()]
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}

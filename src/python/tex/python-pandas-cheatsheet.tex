@@ -1,0 +1,78 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Python/Pandas Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Read a json file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+with open('capitalisation.json', 'r', encoding='utf-8') as f:
+     df = pd.read_json(f)
+
+\end{minted}
+
+\cppitem{Convert json dataframe to csv}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+df.to_csv('capitalisation.csv', encoding='utf-8')
+
+\end{minted}
+
+\cppitem{Convert json dataframe to csv}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# The json objects are stored with the key 'info'
+df['info'].apply(pd.Series).to_csv('info.csv')
+
+\end{minted}
+
+\cppitem{Clean a field}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# Here we remove the simple quote from the column 
+df['symbol'] = df['symbol'].str.replace("'", "")
+
+\end{minted}
+
+\cppitem{Convert a field to datetime}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+df['reportDate'] = pd.to_datetime(df['reportDate'])
+
+\end{minted}
+
+\cppitem{Clean all columns}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# Remove single quote and strip the string
+df.columns = [c.replace("'", "").strip() for c in df.columns.values.tolist()]
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}
