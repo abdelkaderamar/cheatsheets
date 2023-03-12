@@ -72,7 +72,7 @@ title: Add a delta to datetime
 from datetime import datetime, timedelta
 d = datetime.now() + timedelta(days=7)
 #------------------------------------------------------------------------------
-title: Range of date (frequency one month\, using pandas library)
+title: Run an external command
 subprocess.run(["pdflatex", '-interaction=nonstopmode', temp_tex_file.name],
                        cwd='media/generated')
 #------------------------------------------------------------------------------
