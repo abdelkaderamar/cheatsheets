@@ -85,3 +85,21 @@ amount_words = num2words(amount, lang='fr')
 title: Access environment variable
 mail_secret = os.environ['MAIL_SECRET']
 #------------------------------------------------------------------------------
+title: Log to a file and console
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("company_info.log"),
+        logging.StreamHandler()
+    ]
+)
+#------------------------------------------------------------------------------
+title: Read file by (n) lines each iteration
+  with open(filename, 'r') as infile:
+    while True:
+      next_n_lines = list(islice(infile, 5))
+      if not next_n_lines:
+          break
+#------------------------------------------------------------------------------
+

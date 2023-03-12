@@ -118,7 +118,13 @@ pandas.period_range(start_date, end_date, freq='M')
 
 \end{codebox}
 
-\begin{codebox}{python}{Run an external program (and set the working directory)}
+\begin{codebox}{python}{Add a delta to datetime}
+from datetime import datetime, timedelta
+d = datetime.now() + timedelta(days=7)
+
+\end{codebox}
+
+\begin{codebox}{python}{Range of date (frequency one month\, using pandas library)}
 subprocess.run(["pdflatex", '-interaction=nonstopmode', temp_tex_file.name],
                        cwd='media/generated')
 
@@ -136,6 +142,27 @@ amount_words = num2words(amount, lang='fr')
 
 \begin{codebox}{python}{Access environment variable}
 mail_secret = os.environ['MAIL_SECRET']
+
+\end{codebox}
+
+\begin{codebox}{python}{Log to a file and console}
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("company_info.log"),
+        logging.StreamHandler()
+    ]
+)
+
+\end{codebox}
+
+\begin{codebox}{python}{Read file by (n) lines each iteration}
+  with open(filename, 'r') as infile:
+    while True:
+      next_n_lines = list(islice(infile, 5))
+      if not next_n_lines:
+          break
 
 \end{codebox}
 

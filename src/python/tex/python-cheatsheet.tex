@@ -136,7 +136,15 @@ pandas.period_range(start_date, end_date, freq='M')
 
 \end{minted}
 
-\cppitem{Run an external program (and set the working directory)}
+\cppitem{Add a delta to datetime}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+from datetime import datetime, timedelta
+d = datetime.now() + timedelta(days=7)
+
+\end{minted}
+
+\cppitem{Range of date (frequency one month\, using pandas library)}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 subprocess.run(["pdflatex", '-interaction=nonstopmode', temp_tex_file.name],
@@ -155,6 +163,38 @@ temp_tex_file = tempfile.NamedTemporaryFile(mode="w", suffix=".tex", delete=Fals
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 amount_words = num2words(amount, lang='fr')
+
+\end{minted}
+
+\cppitem{Access environment variable}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+mail_secret = os.environ['MAIL_SECRET']
+
+\end{minted}
+
+\cppitem{Log to a file and console}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("company_info.log"),
+        logging.StreamHandler()
+    ]
+)
+
+\end{minted}
+
+\cppitem{Read file by (n) lines each iteration}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+  with open(filename, 'r') as infile:
+    while True:
+      next_n_lines = list(islice(infile, 5))
+      if not next_n_lines:
+          break
 
 \end{minted}
 
