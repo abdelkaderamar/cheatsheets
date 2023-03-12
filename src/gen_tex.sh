@@ -11,10 +11,11 @@ build() {
     python md_to_latex.py "$md_file"
   done
 
-  for yaml_file in */*.yaml
-  do
-    python yaml_to_latex.py "$yaml_file"
-  done
+  # TODO: fix (md vs yaml)
+  # for yaml_file in */*.yaml
+  # do
+  #  python yaml_to_latex.py "$yaml_file"
+  # done
 }
 
 if [ $# -eq 0 ]
