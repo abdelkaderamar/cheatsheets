@@ -27,4 +27,20 @@ urlpatterns = [
     # ...
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #------------------------------------------------------------------------------
-
+title: Query operators
+__exact         __iexact
+__contains      __icontains
+__in
+__gt            __gte           __lt        __lte
+__startswith    __istartswith   __endswith  __iendswith
+__range
+__date          __year          __iso_year
+__month         __day
+__week          __week_day      __iso_week_day
+__quarter
+__time
+__hour          __minute        __second
+__isnull
+__regex
+__iregex
+#------------------------------------------------------------------------------
