@@ -102,4 +102,7 @@ title: Read file by (n) lines each iteration
       if not next_n_lines:
           break
 #------------------------------------------------------------------------------
-
+title: Escape special characters
+import re
+re.espace(str)
+#------------------------------------------------------------------------------
