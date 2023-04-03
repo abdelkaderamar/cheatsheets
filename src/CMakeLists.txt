@@ -79,6 +79,9 @@ Set(PYTHON_FILES
      "python/tex/python-pip-cheatsheet.tex"
      "python/tex/python-pip-colourful.tex"
      "python/tex/python-pip-colourful-updated.tex"
+     "python/tex/python-scraping-cheatsheet.tex"
+     "python/tex/python-scraping-colourful.tex"
+     "python/tex/python-scraping-colourful-updated.tex"
      )
 Foreach (PYTHON_FILE ${PYTHON_FILES})
     Add_Latex_Document(${PYTHON_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)

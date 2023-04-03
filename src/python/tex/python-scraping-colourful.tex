@@ -1,0 +1,53 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Python Scraping Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\begin{codebox}{python}{requests + BeautifulSoup}
+from bs4 import BeautifulSoup
+import requests
+import re
+url = 'https://www.independent.co.uk/arts-entertainment/books/features/best-kids-books-ever-list-b2207921.html'
+page = requests.get(url);
+soup = BeautifulSoup(page.content, "html.parser")
+strongs = soup.select('p strong')
+titles = [ s.text for s in strongs if re.match('\d{1,2}\.', s.text.strip()) ]
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}
