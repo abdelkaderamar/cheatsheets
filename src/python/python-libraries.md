@@ -38,4 +38,10 @@ title: pyyaml
     # load document file
     with open('doc.yaml', 'r') as f:
     doc = yaml.load(f, Loader=yaml.FullLoader)
-
+#---------------------------------------------------------------------------------------------------
+title: sortedcontainers
+l = SortedList([row[0] for row in cur.fetchall()])
+ALL_IDS.add(i.id)
+if id in ALL_IDS:
+  print("found")
+#---------------------------------------------------------------------------------------------------

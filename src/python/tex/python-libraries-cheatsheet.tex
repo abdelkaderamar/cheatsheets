@@ -52,6 +52,31 @@
 
 \end{minted}
 
+\cppitem{pyyaml}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+    import yaml
+    # load multi-documents file
+    with open('multi-doc.yaml', 'r') as f:
+    docs = yaml.load_all(f, Loader=yaml.FullLoader)
+    for doc in docs:
+      pass
+    # load document file
+    with open('doc.yaml', 'r') as f:
+    doc = yaml.load(f, Loader=yaml.FullLoader)
+
+\end{minted}
+
+\cppitem{sortedcontainers}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+l = SortedList([row[0] for row in cur.fetchall()])
+ALL_IDS.add(i.id)
+if id in ALL_IDS:
+  print("found")
+
+\end{minted}
+
 
 \end{multicols}
 
