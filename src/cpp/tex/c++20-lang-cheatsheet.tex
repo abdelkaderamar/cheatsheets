@@ -1,0 +1,76 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{C++14 Language New Features Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Designated initializers}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+struct book_config_t {
+  double total_amount;
+  double order_amount;
+}
+book_config_t config {
+ .total_amount = total_amount,
+ .order_amount = order_amount
+}
+
+\end{minted}
+
+\cppitem{Template in lambda}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+auto add = [&]<typename T>(T sum,
+                           const book_row_t& row)
+{ return sum + (_last_share_price*row.qty); };
+
+\end{minted}
+
+\cppitem{using enum}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+enum class frequency_type {
+  NONE,
+  DAILY,
+  WEEKLY,
+  MONTHLY
+};
+switch (frequency) {
+  using enum frequency_type;
+  {
+    case NONE: break;
+    case DAILY: break;
+    case WEEKLY: break;
+    case MONTHLY: break;
+  }
+}
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}
