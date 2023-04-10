@@ -1,0 +1,170 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}C++ STL Containers Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\begin{codebox}{cpp}{Sort elements in a container}
+// vector
+vector<int> v1{5, 3, 10, 2};
+sort(v1.begin(), v1.end());
+// array
+array<int, 5> a1{3, 2, 10, 5, 2};
+sort(a1.begin(), a1.end());
+// deque
+deque<int> dq1{3, 5, 1, 10, 7};
+sort(dq1.begin(), dq1.end());
+// forward_list
+forward_list<int> fl1{33, 5, 1, 10, 7};
+// error : no random iterator
+f// sort(fl1.begin(), fl2.end());
+l1.sort();
+// List
+list<int> l1{5, 3, 10, 2};
+// error std::sort needs random iterator
+// sort(l1.begin(), l1.end());
+l1.sort();
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Defining a sort comparator}
+struct point_t {
+    int x, y;
+};
+vector<point_t> v1 { {2, 3}, {5, 6}, {1, 2}};
+// error => no comparaison operator
+sort(v1.begin(), v1.end());
+// method 1: operator <
+bool operator<(const point_t& p1, const point_t& p2) {
+    if (p1.x == p2.x) return p1.y < p2.y;
+    return p1.x < p2.x;
+}
+// method 2: operator <
+struct point_t {
+    int x, y;
+    bool operator < (const point_t& other) {
+        if (x == other.x) return y < other.y;
+        return x < other.x;
+    }
+};
+// method 3: sort predicate
+struct point_comparator
+{
+  bool operator()(const point_t& p1,
+                  const point_t& p2)
+  {
+      if (p1.x == p2.x) return p1.y < p2.y;
+      return p1.x < p2.x;
+  }
+};
+sort(v1.begin(), v1.end(), point_comparator());
+// method 4: using lambda expressions
+sort(v1.begin(), v1.end(),
+    [](const point_t &p1, const point_t &p2)
+     {
+       if (p1.x == p2.x)
+          return p1.y < p2.y;
+       return p1.x < p2.x;
+   });
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Sort container in descending order}
+std::sort(container.begin(), container.end(),
+          std::greater<>());
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Print the content of a container}
+// C++11
+copy(v1.begin(), v1.end(),
+     ostream_iterator<point_t>(cout, " "));
+cout << endl;
+// C++20
+ranges::copy(v1,
+             ostream_iterator<point_t>(cout, " "));
+cout << endl;
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Concatenating two vectors/list/deque}
+c1.insert( c1.end(), c2.begin(), c2.end() );
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Concatenating two sets/map}
+// valid also for unordered_set/unordered_map
+c1.insert(c2.begin(), c2.end());
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Concatenate two forward\_list}
+fl1.merge(fl2);
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Loop through map}
+// With C++11
+for (auto const& p : m)
+{
+  cout << p.first << "," << p.second << endl;
+}
+// With C++17
+for (auto const& [k, v] : m) {
+  cout << k << "," << v << endl;
+}
+
+\end{codebox}
+
+\begin{codebox}{cpp}{Sum of container elements}
+// for vector/list/forward_list/deque/set (be
+// careful about initial value type)
+std::accumulate(c1.begin(), c1.end(), 0);
+// to sum custom types
+struct point_t {
+    int x, y;
+    point_t operator+(const point_t& t) {
+        return point_t{x+t.x, y+t.y};
+    }
+};
+vector<point_t> v1{{1,2}, {2,3}, {3,4}};
+point_t sum = accumulate(v1.begin(), v1.end(),
+                        point_t{});
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}
