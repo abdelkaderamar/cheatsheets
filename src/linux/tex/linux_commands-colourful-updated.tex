@@ -1,0 +1,104 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Linux Command Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_updated_template}
+
+% \input{colourful-updated-template-commands.tex}
+
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+%\maketitle
+\scriptsize
+%\tableofcontents
+
+%-----------------------------------------------------
+% \section{Preliminary Information}
+%-----------------------------------------------------
+%-----------------------------------------------------
+% \subsection{Cheatsheet Examples}
+% \input{contents/cheatsheet-examples}
+
+
+
+
+\begin{codebox}{bash}{Interleave lines of two text files}
+paste -d '\n' file1 file2
+
+\end{codebox}
+
+\begin{codebox}{bash}{exiftool - Renaming images}
+# Renames all images in directory "DIR" according to the individual file's creation date in the form "YYYYmmdd\_HHMMSS.ext".
+exiftool "-FileName<CreateDate"
+     -d "%Y%m%d_%H%M%S.%%e" DIR
+
+\end{codebox}
+
+\begin{codebox}{bash}{List package content (before installing it)}
+apt-file update
+apt list package_name
+
+\end{codebox}
+
+\begin{codebox}{bash}{List (installed) package content}
+dpkg -L package_name
+
+\end{codebox}
+
+\begin{codebox}{bash}{Which package provides a file}
+dpkg -S file_absolute_path
+
+\end{codebox}
+
+\begin{codebox}{bash}{Find which package provides a file (not installed)}
+apt-file search file
+
+\end{codebox}
+
+\begin{codebox}{bash}{exiftool - Moving images}
+Moves all images originally in directory "DIR" into a directory hierarchy organized by year/month/day
+exiftool "-Directory<DateTimeOriginal" -d "%Y/%m/%d" DIR
+
+\end{codebox}
+
+\begin{codebox}{bash}{Mount a disk}
+udisksctl mount -b /dev/sdg1
+
+\end{codebox}
+
+\begin{codebox}{bash}{Rename images in directory ``DIR'' into a directory hierarchy organized by ``Model''/year-month-day/date\_time.extension and preserve file date}
+exiftool -o . '-FileName<${model}/${CreateDate}' -d '%Y-%m-%d/%Y%m%d_%H%M%S.%%e' . -P
+
+\end{codebox}
+
+\begin{codebox}{bash}{Change or remove Camera Model Name tag from an image}
+exiftool -'Model'= 20190607_213819.jpg
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}
