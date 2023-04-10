@@ -133,8 +133,11 @@ Restart Gnome Shell				Alt+F2 then type r
 Remove invalid UTF-8 characters in filenames    convmv -r -f ISO-8859-1 -t UTF-8  <dir>
 						convmv -r -f cp437 -t UTF-8 <dir>	
 
-Extract images from a videos			ffmpeg -i inputfile.avi -r 1 image-%3d.jpeg
+Extract images from a video			ffmpeg -i inputfile.avi -r 1 image-%3d.jpeg
 						  -r 1 	extract one image per second
+
+Extract images from a video and setting quality	ffmpeg -i Cold\ War\ -\ 2018.mkv -qscale:v 2 -r 2 images/image-%5d.jpeg
+(quality from 2 to 31, 31 is the worst)
 
 Crop images (not command line but UI)		gthumb
 
@@ -142,4 +145,20 @@ Run ffmpeg in the background			ffmpeg ... > output.log 2>&1 < /dev/null &
 
 extract a segment from an mp3			ffmpeg -ss 00:01:20 -t 00:01:20 -acodec copy -i /path/to/input.mp3 /path/to/output.mp3
 
+Check fstab file				sudo findmnt --verify
+
+Get MAC address					ifconfig -a
+						then check ether value
+
+List package content 				dpkg -L $package
+
+See disk details				lshw -class disk
+
+Add borders to an image
+- Left (white, 10%)				convert Episode-1-19.jpg -bordercolor white -splice 10%x0  output.jpg
+- Right (white, 10%)				convert Episode-1-19.jpg -bordercolor white -gravity east -splice 10%x0  output.jpg
+- Top (white, 10%)				convert Episode-1-19.jpg -bordercolor white -splice 0x10%  output.jpg
+- Bottom (white, 10%)				convert Episode-1-19.jpg -bordercolor white -gravity south -splice 0x10%  output.jpg
+
+Print pdf page number 				pdftk Episode-1.pdf dump_data | grep NumberOfPages
 
