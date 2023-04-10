@@ -85,7 +85,7 @@ class abstract_generator:
         return "\n\n\\end{textbox}\n\n"
 
     def add_section(self, section_name:str) -> str:
-        return "\n\\section{" + section_name + "}\n"
+        return "\n{\centering\\section{" + section_name + "}}\n"
 
     def add_subsection(self, section_name:str) -> str:
         return "\n\\subsection{" + section_name + "}\n"
