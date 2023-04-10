@@ -44,6 +44,14 @@ instrument = data['custom']['instrument']
 
 \end{minted}
 
+\cppitem{Print a json object}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+o =   { "name": "AZZ Incorporated", "ticker": "AZZ", "capitalisation": "1037603000" }
+print(json.dumps(o, indent=2))
+
+\end{minted}
+
 
 \end{multicols}
 
