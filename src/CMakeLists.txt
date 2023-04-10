@@ -17,6 +17,9 @@ Set(CPP_FILES
     "cpp/tex/c++14-lang_cs-cheatsheet.tex"
     "cpp/tex/c++14-lang_cs-colourful-updated.tex"
     "cpp/tex/c++14-lang_cs-colourful.tex"
+    "cpp/tex/c++_stl_container-cheatsheet.tex"
+    "cpp/tex/c++_stl_container-colourful-updated.tex"
+    "cpp/tex/c++_stl_container-colourful.tex"
 )
 Foreach (CPP_FILE ${CPP_FILES})
     Add_Latex_Document(${CPP_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
@@ -54,6 +57,9 @@ Endforeach(CSS_FILE)
 
 # LINUX
 Set(LINUX_FILES
+     "linux/tex/linux_commands-cheatsheet.tex"
+     "linux/tex/linux_commands-colourful.tex"
+     "linux/tex/linux_commands-colourful-updated.tex"
      "linux/tex/linux_misc-cheatsheet.tex"
      "linux/tex/linux_misc-colourful.tex"
      "linux/tex/linux_misc-colourful-updated.tex"
@@ -95,6 +101,12 @@ Set(TOOLS_FILES
      "tools/tex/cmake-cheatsheet.tex"
      "tools/tex/cmake-colourful.tex"
      "tools/tex/cmake-colourful-updated.tex"
+     "tools/tex/makefile-cheatsheet.tex"
+     "tools/tex/makefile-colourful.tex"
+     "tools/tex/makefile-colourful-updated.tex"
+     "tools/tex/vscode-cheatsheet.tex"
+     "tools/tex/vscode-colourful.tex"
+     "tools/tex/vscode-colourful-updated.tex"
      )
 Foreach (TOOLS_FILE ${TOOLS_FILES})
     Add_Latex_Document(${TOOLS_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
@@ -108,3 +120,23 @@ Set(MISC_FILES
 Foreach (MISC_FILE ${MISC_FILES})
     Add_Latex_Document(${MISC_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
 Endforeach(MISC_FILE)
+
+# DB
+Set(DB_FILES
+    "db/tex/mysql-cheatsheet.tex"
+    "db/tex/mysql-colourful.tex"
+    "db/tex/mysql-colourful-updated.tex"
+)
+Foreach (DB_FILE ${DB_FILES})
+    Add_Latex_Document(${DB_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(DB_FILE)
+
+# Latex
+Set(LATEX_FILES
+    "latex/tex/latex-cheatsheet.tex"
+    "latex/tex/latex-colourful.tex"
+    "latex/tex/latex-colourful-updated.tex"
+)
+Foreach (LATEX_FILE ${LATEX_FILES})
+    Add_Latex_Document(${LATEX_FILE} MANGLE_TARGET_NAMES DEFAULT_PDF)
+Endforeach(LATEX_FILE)
