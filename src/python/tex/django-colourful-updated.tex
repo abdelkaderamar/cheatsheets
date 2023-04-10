@@ -41,12 +41,43 @@
 
 
 
-\begin{codebox}{bash}{Create a new project}
-django-admin startproject myproject
-# create a project in the current directory
-django-admin startproject myproject
-# create a project in a different directory
-django-admin startproject myproject project_dir
+{\centering\section{The Basics}}
+
+\begin{codebox}{bash}{Start the server}
+python manage.py runserver
+python manage.py runserver 8080
+
+\end{codebox}
+
+\begin{codebox}{bash}{Create an app}
+python manage.py startapp app_name
+
+\end{codebox}
+
+\begin{codebox}{bash}{Create database table}
+python manage.py migrate
+
+\end{codebox}
+
+\begin{codebox}{bash}{Apply model change}
+python manage.py makemigrations app_name
+
+\end{codebox}
+
+\begin{codebox}{bash}{Show generate SQL}
+python manage.py sqlmigrate app_name migration_name
+
+\end{codebox}
+
+{\centering\section{Admin}}
+
+\begin{codebox}{bash}{Create a super user}
+python manage.py createsuperuser
+
+\end{codebox}
+
+\begin{codebox}{bash}{Add a model to admin interface (app/admin.py)}
+admin.site.register(model_name)
 
 \end{codebox}
 

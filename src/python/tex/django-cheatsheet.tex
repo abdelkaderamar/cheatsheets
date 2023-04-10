@@ -26,14 +26,57 @@
   \noindent    %<---- here
 
 
-\cppitem{Create a new project}
+{\centering\section{The Basics}}
+
+\cppitem{Start the server}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
-django-admin startproject myproject
-# create a project in the current directory
-django-admin startproject myproject
-# create a project in a different directory
-django-admin startproject myproject project_dir
+python manage.py runserver
+python manage.py runserver 8080
+
+\end{minted}
+
+\cppitem{Create an app}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+python manage.py startapp app_name
+
+\end{minted}
+
+\cppitem{Create database table}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+python manage.py migrate
+
+\end{minted}
+
+\cppitem{Apply model change}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+python manage.py makemigrations app_name
+
+\end{minted}
+
+\cppitem{Show generate SQL}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+python manage.py sqlmigrate app_name migration_name
+
+\end{minted}
+
+{\centering\section{Admin}}
+
+\cppitem{Create a super user}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+python manage.py createsuperuser
+
+\end{minted}
+
+\cppitem{Add a model to admin interface (app/admin.py)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+admin.site.register(model_name)
 
 \end{minted}
 
