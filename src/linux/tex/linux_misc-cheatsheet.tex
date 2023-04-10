@@ -33,6 +33,36 @@ journalctl -b
 
 \end{minted}
 
+\cppitem{Reinstall a package}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+sudo apt --reinstall install texlive-latex-extra
+
+\end{minted}
+
+\cppitem{List package content}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+dpkg -L texlive-latex-extra
+
+\end{minted}
+
+\cppitem{Split a text file with (n) lines for each generated file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+split  -d -l400 --additional-suffix=.txt company_list.txt "company_list-"
+
+\end{minted}
+
+\cppitem{Display music file tags}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+mp3info track.mp3    # support only id3v1
+id3info track.mp3    
+metaflac --list track.flac
+
+\end{minted}
+
 
 \end{multicols}
 

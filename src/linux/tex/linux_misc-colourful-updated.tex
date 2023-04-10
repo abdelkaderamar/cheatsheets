@@ -56,6 +56,18 @@ dpkg -L texlive-latex-extra
 
 \end{codebox}
 
+\begin{codebox}{bash}{Split a text file with (n) lines for each generated file}
+split  -d -l400 --additional-suffix=.txt company_list.txt "company_list-"
+
+\end{codebox}
+
+\begin{codebox}{bash}{Display music file tags}
+mp3info track.mp3    # support only id3v1
+id3info track.mp3    
+metaflac --list track.flac
+
+\end{codebox}
+
 
 %---------------------------------------------
 \AtNextBibliography{\footnotesize}
