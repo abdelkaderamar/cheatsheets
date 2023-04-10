@@ -1,0 +1,53 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{MySQL Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Grant user access to a database}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+GRANT ALL PRIVILEGES ON database_name.* TO new_user'@'localhost' IDENTIFIED BY 'user_password';
+
+\end{minted}
+
+\cppitem{Set root password}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# sudo /etc/init.d/mysql stop
+# sudo mysqld_safe --skip-grant-tables &
+# mysql -u root
+  use mysql
+  update user set authentication_string=PASSWORD("MyPassword") where User='root';
+  flush privileges;
+  quit
+# sudo /etc/init.d/mysql stop
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}

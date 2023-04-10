@@ -1,0 +1,58 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}MySQL Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+\begin{codebox}{mysql}{Grant user access to a database}
+GRANT ALL PRIVILEGES ON database_name.* TO new_user'@'localhost' IDENTIFIED BY 'user_password';
+
+\end{codebox}
+
+\begin{codebox}{mysql}{Set root password}
+# sudo /etc/init.d/mysql stop
+# sudo mysqld_safe --skip-grant-tables &
+# mysql -u root
+  use mysql
+  update user set authentication_string=PASSWORD("MyPassword") where User='root';
+  flush privileges;
+  quit
+# sudo /etc/init.d/mysql stop
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}
