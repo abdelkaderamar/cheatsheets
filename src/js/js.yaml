@@ -1,0 +1,3 @@
+title: Print the content of an object
+item: console.log(JSON.stringify(object, null, 4));
+
