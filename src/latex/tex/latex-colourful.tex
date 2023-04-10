@@ -1,0 +1,116 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}Latex Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_template}
+% \input{colourful-template-commands.tex}
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+\scriptsize
+% \tableofcontents
+
+
+
+{\centering\section{Text Properties}}
+
+\begin{codebox}{latex}{Fonts}
+\textrm{Roman}
+\textsf{Sans serif}
+\texttt{Typewriter}
+\textmd{Medium series}
+\textbf{Bold series}
+\textup{Upright shape}
+\textit{Italic shape}
+\textsl{Slanted shape}
+\textsc{Small Caps shape}
+\emph{Emphasized}
+\textnormal{Document font}
+\underline{Underline}
+
+\end{codebox}
+
+\begin{codebox}{latex}{Size}
+\tiny \scriptsize \footnotesize \small \normalsize
+\large \Large \LARGE \huge \Huge
+
+\end{codebox}
+
+{\centering\section{Multiple Columns}}
+
+\begin{codebox}{latex}{Multiple columns}
+\usepackage{multicol}
+% column separation set to 1cm
+\setlength{\columnsep}{1cm}
+% insert a blue vertical rulers (add color package)
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}
+% use multicols* for unbalanced columns
+\begin{multicols}{3}
+["Header text", which is inserted in between square
+brackets. This is optional and will be displayed on
+top of the multicolumn text.]
+% insert a column breakpoint
+\columnbreak
+\end{multicols}
+
+\end{codebox}
+
+{\centering\section{Tabular}}
+
+\begin{codebox}{latex}{Multiple line in some cells: p-type column}
+\begin{tabular}{l|p{15mm}}
+\hline
+foo & bar \newline rlz \\
+\hline
+\end{tabular}
+
+\end{codebox}
+
+\begin{codebox}{latex}{Multiple line in some cells: tabular within tabular}
+\begin{tabular}{cccc}
+One & Two & Three & Four \\
+Een & Twee & Drie & Vier \\
+One & Two &
+\begin{tabular}{@{}c@{}}
+Three \\ Drie\end{tabular}
+& Four
+\end{tabular}
+
+\end{codebox}
+
+\begin{codebox}{latex}{Multiple line in some cells: \shortstack}
+\begin{tabular}{ccc}
+one & two & three \\
+one & two & \shortstack{aa \\ bb}\\
+\end{tabular}
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}

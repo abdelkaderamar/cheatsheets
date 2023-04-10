@@ -1,0 +1,119 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{Latex Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+{\centering\section{Text Properties}}
+
+\cppitem{Fonts}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+\textrm{Roman}
+\textsf{Sans serif}
+\texttt{Typewriter}
+\textmd{Medium series}
+\textbf{Bold series}
+\textup{Upright shape}
+\textit{Italic shape}
+\textsl{Slanted shape}
+\textsc{Small Caps shape}
+\emph{Emphasized}
+\textnormal{Document font}
+\underline{Underline}
+
+\end{minted}
+
+\cppitem{Size}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+\tiny \scriptsize \footnotesize \small \normalsize
+\large \Large \LARGE \huge \Huge
+
+\end{minted}
+
+{\centering\section{Multiple Columns}}
+
+\cppitem{Multiple columns}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+\usepackage{multicol}
+% column separation set to 1cm
+\setlength{\columnsep}{1cm}
+% insert a blue vertical rulers (add color package)
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}
+% use multicols* for unbalanced columns
+\begin{multicols}{3}
+["Header text", which is inserted in between square
+brackets. This is optional and will be displayed on
+top of the multicolumn text.]
+% insert a column breakpoint
+\columnbreak
+\end{multicols}
+
+\end{minted}
+
+{\centering\section{Tabular}}
+
+\cppitem{Multiple line in some cells: p-type column}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+\begin{tabular}{l|p{15mm}}
+\hline
+foo & bar \newline rlz \\
+\hline
+\end{tabular}
+
+\end{minted}
+
+\cppitem{Multiple line in some cells: tabular within tabular}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+\begin{tabular}{cccc}
+One & Two & Three & Four \\
+Een & Twee & Drie & Vier \\
+One & Two &
+\begin{tabular}{@{}c@{}}
+Three \\ Drie\end{tabular}
+& Four
+\end{tabular}
+
+\end{minted}
+
+\cppitem{Multiple line in some cells: \shortstack}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+\begin{tabular}{ccc}
+one & two & three \\
+one & two & \shortstack{aa \\ bb}\\
+\end{tabular}
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}
