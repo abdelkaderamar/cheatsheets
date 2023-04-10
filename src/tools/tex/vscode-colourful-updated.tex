@@ -1,0 +1,78 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+
+
+% colour themes to come. KnitR?
+
+%-------------------------
+
+\title{\color{w3schools}VSCode Cheatsheet
+}
+%\author{Abdelkader Amar}
+%\date{\today}
+
+\usepackage{colourful_updated_template}
+
+% \input{colourful-updated-template-commands.tex}
+
+
+
+%--------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+\small
+\begin{multicols}{3}
+
+\thispagestyle{empty}
+%\maketitle
+\scriptsize
+%\tableofcontents
+
+%-----------------------------------------------------
+% \section{Preliminary Information}
+%-----------------------------------------------------
+%-----------------------------------------------------
+% \subsection{Cheatsheet Examples}
+% \input{contents/cheatsheet-examples}
+
+
+
+
+\begin{codebox}{text}{Switch between source/header file}
+Alt - O
+
+\end{codebox}
+
+\begin{codebox}{text}{Fold the level [n] (0 to fold all)}
+   Ctrl - k / Ctrl [n]
+Unfold all
+   Ctrl - k / Ctrl j
+
+\end{codebox}
+
+\begin{codebox}{text}{Shortcut to switch between editor/terminal}
+Open keybindings.json (using Ctrl+Shift+P then
+Open Keyboard Shortcuts File) and add the following
+{
+  "key": "shift+alt+t",
+  "command": "workbench.action.terminal.focus"
+},
+{
+  "key": "shift+alt+t",
+  "command":
+    "workbench.action.focusActiveEditorGroup",
+  "when": "terminalFocus"
+}
+
+\end{codebox}
+
+
+%---------------------------------------------
+\AtNextBibliography{\footnotesize}
+\printbibliography  
+\end{multicols}
+
+\end{document}

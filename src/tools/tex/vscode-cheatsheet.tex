@@ -1,0 +1,66 @@
+\documentclass[10pt,english,landscape, a4]{article}
+\usepackage{cpp}
+
+
+\pdfinfo{
+  /Title (C++ STL Container Cheatsheet.pdf)
+  /Creator (Abdelkader Amar)
+  /Author (Abdelkader Amar)
+  /Subject (C++)
+  /Keywords (C++, STL, Programming, Latex)}
+
+
+
+\begin{document}
+\raggedright\
+
+\begin{center}
+  \cheatsheettitle{VSCode Cheatsheet
+}
+\end{center}
+%\vspace{0.5cm}
+
+\footnotesize
+\begin{multicols}{3}
+  \raggedcolumns
+  \noindent    %<---- here
+
+
+\cppitem{Switch between source/header file}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Alt - O
+
+\end{minted}
+
+\cppitem{Fold the level [n] (0 to fold all)}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+   Ctrl - k / Ctrl [n]
+Unfold all
+   Ctrl - k / Ctrl j
+
+\end{minted}
+
+\cppitem{Shortcut to switch between editor/terminal}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+Open keybindings.json (using Ctrl+Shift+P then
+Open Keyboard Shortcuts File) and add the following
+{
+  "key": "shift+alt+t",
+  "command": "workbench.action.terminal.focus"
+},
+{
+  "key": "shift+alt+t",
+  "command":
+    "workbench.action.focusActiveEditorGroup",
+  "when": "terminalFocus"
+}
+
+\end{minted}
+
+
+\end{multicols}
+
+\end{document}
