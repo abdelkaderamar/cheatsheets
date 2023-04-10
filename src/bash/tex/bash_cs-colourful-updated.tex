@@ -41,7 +41,7 @@
 
 
 
-\section{Strings}
+{\centering\section{Strings}}
 
 \begin{codebox}{bash}{Remove newlines from string}
 ${str//[$'\t\r\n ']} 
@@ -58,7 +58,14 @@ sed 's/pattern/d' file.txt
 
 \end{codebox}
 
-\section{Arrays}
+\begin{codebox}{bash}{Check if a string starts with a pattern}
+if [[ "$var" == ${pattern}* ]]
+# or
+if [[ "$var" =~ ^${pattern}.* ]]
+
+\end{codebox}
+
+{\centering\section{Arrays}}
 
 \begin{codebox}{bash}{Array split}
 arr=("a" "b" "c" "d")
@@ -67,6 +74,11 @@ echo "${arr[@]}"
 # a b c d
 echo "${team_one[@]}"
 # a b
+
+\end{codebox}
+
+\begin{codebox}{bash}{Array of string from multi-line string}
+mapfile -t arr <<< "$str"
 
 \end{codebox}
 

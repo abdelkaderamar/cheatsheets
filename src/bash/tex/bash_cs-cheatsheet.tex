@@ -26,7 +26,7 @@
   \noindent    %<---- here
 
 
-\section{Strings}
+{\centering\section{Strings}}
 
 \cppitem{Remove newlines from string}
 \begin{minted}
@@ -46,6 +46,36 @@ mod=${orig//[xyz]/_}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 sed 's/pattern/d' file.txt
+
+\end{minted}
+
+\cppitem{Check if a string starts with a pattern}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+if [[ "$var" == ${pattern}* ]]
+# or
+if [[ "$var" =~ ^${pattern}.* ]]
+
+\end{minted}
+
+{\centering\section{Arrays}}
+
+\cppitem{Array split}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+arr=("a" "b" "c" "d")
+team_one=("${arr[@]:0:2}")
+echo "${arr[@]}"
+# a b c d
+echo "${team_one[@]}"
+# a b
+
+\end{minted}
+
+\cppitem{Array of string from multi-line string}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+mapfile -t arr <<< "$str"
 
 \end{minted}
 
