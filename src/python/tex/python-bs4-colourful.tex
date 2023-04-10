@@ -58,6 +58,12 @@ indice_name = soup.find('div', {'class': 'modal-title'}).find('h2').text
 
 \end{codebox}
 
+\begin{codebox}{python}{Extract attribute value}
+# [attr_name]
+tr.select('td.srd')[0].find('a')['href']
+
+\end{codebox}
+
 \begin{codebox}{python}{Find the last element}
 a=list(soup.find_all('a', class_='page-number'))[-1]
 
@@ -65,6 +71,12 @@ a=list(soup.find_all('a', class_='page-number'))[-1]
 
 \begin{codebox}{python}{Find the parent element}
 tr=soup.find('a', {"href" : url}, text=name).parent.parent
+
+\end{codebox}
+
+\begin{codebox}{python}{Use css selector}
+# Find li elements inside ul element
+menu.select('ul li')
 
 \end{codebox}
 

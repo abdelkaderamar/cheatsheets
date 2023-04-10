@@ -18,7 +18,8 @@ title: Extract the text value
 indice_name = soup.find('div', {'class': 'modal-title'}).find('h2').text
 #------------------------------------------------------------------------------
 title: Extract attribute value
-
+# [attr_name]
+tr.select('td.srd')[0].find('a')['href']
 #------------------------------------------------------------------------------
 title: Find the last element
 a=list(soup.find_all('a', class_='page-number'))[-1]
@@ -26,6 +27,9 @@ a=list(soup.find_all('a', class_='page-number'))[-1]
 title: Find the parent element
 tr=soup.find('a', {"href" : url}, text=name).parent.parent
 #------------------------------------------------------------------------------
+title: Use css selector 
+# Find li elements inside ul element
+menu.select('ul li')
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------

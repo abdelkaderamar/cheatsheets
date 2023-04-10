@@ -62,6 +62,14 @@ indice_name = soup.find('div', {'class': 'modal-title'}).find('h2').text
 
 \end{minted}
 
+\cppitem{Extract attribute value}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# [attr_name]
+tr.select('td.srd')[0].find('a')['href']
+
+\end{minted}
+
 \cppitem{Find the last element}
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
@@ -73,6 +81,14 @@ a=list(soup.find_all('a', class_='page-number'))[-1]
 \begin{minted}
   [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
 tr=soup.find('a', {"href" : url}, text=name).parent.parent
+
+\end{minted}
+
+\cppitem{Use css selector}
+\begin{minted}
+  [frame=single, rulecolor=blue, framesep=1mm, baselinestretch=1, fontsize=\footnotesize]{cpp}
+# Find li elements inside ul element
+menu.select('ul li')
 
 \end{minted}
 
